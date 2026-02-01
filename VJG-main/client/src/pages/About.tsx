@@ -143,7 +143,7 @@ export default function About() {
 
         <div className="container-wrapper text-center">
           <h1 className="text-2xl md:text-3xl font-display font-bold mb-2 text-cyan-400">
-            About VJG Technologies
+            About Varchaslabs 
           </h1>
 
           <p className="text-slate-300 max-w-2xl mx-auto text-lg">
@@ -164,7 +164,7 @@ export default function About() {
                 Who We Are
               </h2>
               <p className="text-slate-600 leading-relaxed">
-                VJG Technologies delivers scalable software solutions and
+                Varchaslabs Technologies delivers scalable software solutions and
                 experienced IT professionals across industries. We empower
                 businesses to innovate, optimize, and grow through our expertise
                 in:
@@ -223,7 +223,7 @@ export default function About() {
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl font-display font-bold text-slate-900 mb-4">
-                Why Partner with VJG Technologies?
+                Why Partner with Varchaslabs? 
               </h2>
               <p className="text-slate-500">
                 We combine innovative software solutions with experienced engineers to help businesses achieve operational excellence.

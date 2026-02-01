@@ -21,36 +21,41 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { href: "/services", label: "Services" },
+    { name: "Services", href: "/services" },
     { name: "About Us", href: "/about" },
     { name: "Job Openings", href: "/#jobs" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <header className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300",
-      scrolled ? "bg-white/95 backdrop-blur-md shadow-md py-2" : "bg-transparent py-4"
-    )}>
+    <header
+      className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-300",
+        scrolled
+          ? "bg-gradient-to-r from-slate-50 via-white to-slate-100 shadow-md py-2"
+  : "bg-transparent py-2"
+      )}
+    >
       {/* Top Bar for Contact Info - Hidden on mobile */}
-      
 
-      <div className={cn(
-        "container-wrapper flex items-center justify-between transition-all duration-300",
-        scrolled ? "mt-0" : "lg:mt-6"
-      )}>
+      <div
+        className={cn(
+          "container-wrapper flex items-center justify-between transition-all duration-300",
+          scrolled ? "mt-0" : "lg:mt-2"
+        )}
+      >
         {/* Logo */}
-      <Link href="/">
-  <motion.div
-    className="flex items-center gap-5 cursor-pointer select-none"
-    initial={{ opacity: 0, x: -30 }}
-    animate={{ opacity: 1, x: 0 }}
-    whileHover={{ scale: 1.04 }}
-    transition={{ type: "spring", stiffness: 120 }}
-  >
-    {/* LOGO CONTAINER */}
-    <motion.div
-      className="
+        <Link href="/">
+          <motion.div
+            className="flex items-center gap-5 cursor-pointer select-none"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            whileHover={{ scale: 1.04 }}
+            transition={{ type: "spring", stiffness: 120 }}
+          >
+            {/* LOGO CONTAINER */}
+            <motion.div
+              className="
         relative
         flex items-center justify-center
         w-[50px] h-[50px]
@@ -59,103 +64,103 @@ export default function Navbar() {
         shadow-2xl
         ring-2 ring-cyan-400/40
       "
-      whileHover={{
-        boxShadow: "0 0 60px rgba(16, 185, 129, 0.6)",
-
-      }}
-      animate={{ y: [0, -6, 0] }}
-      transition={{
-        y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-        boxShadow: { duration: 0.4 },
-      }}
-    >
-      {/* LOGO */}
-      <motion.img
-        src="/images/logo.svg"
-        alt="VJG Logo"
-        className="
+              whileHover={{
+                boxShadow: "0 0 60px rgba(16, 185, 129, 0.6)",
+              }}
+              animate={{ y: [0, -6, 0] }}
+              transition={{
+                y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                boxShadow: { duration: 0.4 },
+              }}
+            >
+              {/* LOGO */}
+              <motion.img
+                src="/images/logo.svg"
+                alt="VJG Logo"
+                className="
           w-[155px] h-[155px]
           object-contain
           drop-shadow-[0_0_18px_rgba(34,211,238,0.65)]
         "
-        animate={{ scale: [1, 1.06, 1] }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-    </motion.div>
+                animate={{ scale: [1, 1.06, 1] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </motion.div>
 
-    {/* TEXT */}
-    {/* TEXT */}
-<div
-  className={cn(
-    "font-display font-extrabold leading-tight tracking-wide",
-    scrolled ? "text-slate-900" : "text-white"
-  )}
->
-  {/* MAIN BRAND */}
-  <span
-    className={cn(
-      "text-4xl bg-clip-text text-transparent tracking-tight",
-      scrolled
-        ? "bg-gradient-to-r from-indigo-600 via-sky-500 to-cyan-500"
-        : "bg-gradient-to-r from-indigo-400 via-sky-400 to-cyan-300"
-    )}
-  >
-    Technologies
-  </span>
+            {/* TEXT */}
+            <div
+              className={cn(
+                "font-display font-extrabold leading-tight tracking-wide",
+                scrolled ? "text-slate-900" : "text-white"
+              )}
+            >
+              {/* MAIN BRAND */}
+              <span
+                className={cn(
+                  "text-4xl bg-clip-text text-transparent tracking-tight",
+                  scrolled
+                    ? "bg-gradient-to-r from-indigo-600 via-sky-500 to-cyan-500"
+                    : "bg-gradient-to-r from-indigo-400 via-sky-400 to-cyan-300"
+                )}
+              >
+                VarchasLabs
+              </span>
 
-  {/* TAGLINE */}
-  <span
-    className={cn(
-      "relative block text-xs font-medium uppercase tracking-[0.25em] mt-2",
-      scrolled ? "text-slate-600" : "text-slate-400"
-    )}
-  >
-    {/* Micro brand divider */}
-    <span
-      className={cn(
-        "absolute left-1/2 -translate-x-1/2 -top-2 w-8 h-px",
-        scrolled
-          ? "bg-gradient-to-r from-transparent via-sky-600 to-transparent"
-          : "bg-gradient-to-r from-transparent via-sky-400 to-transparent"
-      )}
-    />
-    Engineering Talent Solutions
-  </span>
-</div>
-
-  </motion.div>
-</Link>
-
-
+              {/* TAGLINE */}
+              <span
+                className={cn(
+                  "relative block text-xs font-medium uppercase tracking-[0.25em] mt-2",
+                  scrolled ? "text-slate-600" : "text-slate-400"
+                )}
+              >
+                {/* Micro brand divider */}
+                <span
+                  className={cn(
+                    "absolute left-1/2 -translate-x-1/2 -top-2 w-8 h-px",
+                    scrolled
+                      ? "bg-gradient-to-r from-transparent via-sky-600 to-transparent"
+                      : "bg-gradient-to-r from-transparent via-sky-400 to-transparent"
+                  )}
+                />
+                Engineering Talent Solutions
+              </span>
+            </div>
+          </motion.div>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link key={link.name} href={link.href}>
-              <div className={cn(
-                "text-sm font-medium transition-colors hover:text-accent cursor-pointer relative group",
-                location === link.href 
-                  ? "text-primary font-semibold" 
-                  : scrolled ? "text-slate-600" : "text-white/90"
-              )}>
+              <div
+                className={cn(
+                  "text-sm font-medium cursor-pointer relative group transition-colors",
+                  scrolled ? "text-primary" : "text-white",
+                  "hover:text-accent"
+                )}
+              >
                 {link.name}
-                <span className={cn(
-                  "absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300",
-                  location === link.href ? "w-full" : "w-0 group-hover:w-full"
-                )} />
+                <span
+                  className={cn(
+                    "absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300",
+                    location === link.href ? "w-full" : "w-0 group-hover:w-full"
+                  )}
+                />
               </div>
             </Link>
           ))}
           <Link href="/contact">
-            <Button 
-              size="sm" 
+            <Button
+              size="sm"
               className={cn(
                 "font-semibold shadow-lg transition-all hover:-translate-y-0.5",
-                scrolled ? "bg-primary text-white" : "bg-white text-primary hover:bg-white/90"
+                scrolled
+                  ? "bg-primary text-white"
+                  : "bg-white text-primary hover:bg-white/90"
               )}
             >
               Get Started
@@ -164,7 +169,7 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="lg:hidden p-2 text-slate-900"
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -178,10 +183,12 @@ export default function Navbar() {
           <div className="container-wrapper py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link key={link.name} href={link.href}>
-                <div 
+                <div
                   className={cn(
                     "text-lg font-medium p-2 rounded-md transition-colors cursor-pointer",
-                    location === link.href ? "bg-primary/10 text-primary" : "text-slate-600 hover:bg-slate-50"
+                    location === link.href
+                      ? "bg-primary/10 text-primary"
+                      : "text-slate-600 hover:bg-slate-50"
                   )}
                   onClick={() => setIsOpen(false)}
                 >

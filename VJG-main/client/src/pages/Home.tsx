@@ -56,7 +56,7 @@ export default function Home() {
             </h1>
             
             <p className="text-lg text-slate-300 max-w-xl leading-relaxed">
-              VJG Technologies bridges the gap between aspirants and industry. Get placed in top MNCs with our proven job placement program and dedicated career support.
+              Varchaslabs bridges the gap between aspirants and industry. Get placed in top MNCs with our proven job placement program and dedicated career support.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -124,7 +124,7 @@ export default function Home() {
                 Your Pathway to a Successful IT Career
               </h2>
               <p className="text-slate-600 leading-relaxed text-lg">
-                VJG Technologies is a leading IT solutions and placement firm. We specialize in identifying talent and matching them with the perfect roles in the industry.
+                Varchaslabs is a leading IT solutions and placement firm. We specialize in identifying talent and matching them with the perfect roles in the industry.
               </p>
               
               <div className="grid sm:grid-cols-2 gap-4 pt-4">
@@ -224,7 +224,7 @@ export default function Home() {
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
                     <div className="h-10 w-10 rounded-full bg-slate-700 overflow-hidden flex items-center justify-center text-xs font-bold bg-gradient-to-br from-blue-500 to-purple-600">
-                      VJG
+                     Varchaslabs
                     </div>
                     <div>
                       <div className="text-sm font-bold">Placed Candidate</div>

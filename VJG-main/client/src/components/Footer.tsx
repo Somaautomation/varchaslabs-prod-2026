@@ -11,9 +11,9 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-6">
               <div className="h-8 w-8 bg-primary rounded-md flex items-center justify-center text-white font-bold text-lg font-display">
-                VJG
+                VL
               </div>
-              <span className="font-display font-bold text-xl">Technologies</span>
+              <span className="font-display font-bold text-xl">Varchaslabs</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Connecting top-tier IT talent with leading technology companies. Your career success is our primary mission.
@@ -64,14 +64,14 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                <span>contact@vjgtech.com</span>
+                <span>contact@Varchaslabs.com</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>&copy; {new Date().getFullYear()} VJG Technologies. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Varchaslabs.  All rights reserved.</p>
           <div className="flex gap-6">
             <span className="cursor-pointer hover:text-white transition-colors">Terms of Service</span>
             <span className="cursor-pointer hover:text-white transition-colors">Privacy Policy</span>
