@@ -163,13 +163,13 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wide uppercase mb-4">
               <Sparkles className="w-4 h-4" />
-              Our Partners
+              Our Clients & Partners
             </div>
             <h2 className="text-3xl md:text-4xl font-display font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-3">
-              Our Clients & Partners
+              Technology Companies We Work With
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Trusted by leading software companies worldwide
+              Delivering software solutions and skilled talent to growing businesses
             </p>
           </motion.div>
           
