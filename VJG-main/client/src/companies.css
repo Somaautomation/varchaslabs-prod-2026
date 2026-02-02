@@ -285,3 +285,104 @@
         width: 60px;
     }
 }
+/* ============================================
+   BLUE-PURPLE GRADIENT SECTION
+   ============================================ */
+
+.gradient-feature-section {
+    position: relative;
+    background: linear-gradient(135deg, 
+        #4F46E5 0%,
+        #6366F1 25%,
+        #8B5CF6 50%,
+        #A855F7 75%,
+        #7C3AED 100%
+    );
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Animated Background Elements */
+.gradient-bg-left {
+    position: absolute;
+    left: -100px;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    background: linear-gradient(to right, 
+        rgba(99, 102, 241, 0.3) 0%,
+        transparent 100%
+    );
+    animation: pulse-left 3s ease-in-out infinite;
+}
+
+.gradient-bg-right {
+    position: absolute;
+    right: -100px;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    background: linear-gradient(to left, 
+        rgba(139, 92, 246, 0.4) 0%,
+        transparent 100%
+    );
+    animation: pulse-right 4s ease-in-out infinite;
+}
+
+/* Stat Cards */
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes pulse-left {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateX(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(20px);
+    }
+}
+
+@keyframes pulse-right {
+    0%, 100% {
+        opacity: 0.4;
+        transform: translateX(0);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translateX(-20px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gradient-feature-section {
+        padding: 60px 0;
+    }
+
+    .stat-card {
+        padding: 24px 16px;
+    }
+
+    .gradient-bg-left,
+    .gradient-bg-right {
+        display: none;
+    }
+}

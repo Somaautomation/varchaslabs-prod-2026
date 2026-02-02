@@ -154,7 +154,7 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       <section className="py-20 companies-gradient overflow-hidden relative">
         <div className="absolute inset-0 bg-pattern opacity-10"></div>
         <div className="container-wrapper relative z-10">
-          <motion.div 
+          <motion.div   
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -199,6 +199,93 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
           </div>
         </div>
       </section>
+
+{/* Blue-Purple Gradient Feature Section */}
+<section className="gradient-feature-section relative overflow-hidden">
+  {/* Animated Background Elements */}
+  <div className="gradient-bg-left"></div>
+  <div className="gradient-bg-right"></div>
+  
+  <div className="container-wrapper relative z-10 py-20">
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* Left Content */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="space-y-6"
+      >
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-bold tracking-wide uppercase">
+          <Sparkles className="w-4 h-4" />
+          Why Choose Us
+        </div>
+        
+        <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-tight">
+          Build Software. Scale Teams. Deliver Results.
+        </h2>
+        
+        <p className="text-lg text-white/90 leading-relaxed">
+          We partner with businesses to deliver high-quality software solutions and reliable IT staffing services—helping you innovate faster and scale with confidence.
+        </p>
+
+        {/* Feature List */}
+<div className="space-y-4 pt-4">
+  {[
+    { icon: "✓", text: "Custom software development & product engineering" },
+    { icon: "✓", text: "IT staffing solutions (contract, full-time, remote)" },
+    { icon: "✓", text: "Dedicated teams & resource augmentation" },
+    { icon: "✓", text: "Quality-driven, agile, and secure delivery" }
+  ].map((item, index) => (
+    <div key={index} className="flex items-center gap-3">
+      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white font-bold">
+        {item.icon}
+      </div>
+      <span className="text-white/90 text-lg">{item.text}</span>
+    </div>
+  ))}
+</div>
+
+        <div className="pt-6">
+          <Link href="/contact">
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90 px-8 h-14 rounded-xl text-lg shadow-2xl">
+              Get Started Today <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+        </div>
+      </motion.div>
+
+      {/* Right Stats Cards */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="grid grid-cols-2 gap-6"
+      >
+        {[
+          { number: "50+", label: "Projects Delivered", icon: "🚀" },
+          { number: "200+", label: "Client Partners", icon: "🏢" },
+          { number: "300+", label: "Skilled Engineers", icon: "👨‍💻" },
+          { number: "24/7", label: "Support & Delivery", icon: "💬" }
+        ].map((stat, index) => (
+          <div
+            key={index}
+            className="stat-card"
+          >
+            <div className="text-4xl mb-3">{stat.icon}</div>
+            <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
+            <div className="text-white/80 text-sm font-medium">{stat.label}</div>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  </div>
+
+  {/* Decorative Elements */}
+  <div className="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+  <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+</section>
 
       {/* ABOUT PREVIEW */}
       <section className="section-padding bg-white">
