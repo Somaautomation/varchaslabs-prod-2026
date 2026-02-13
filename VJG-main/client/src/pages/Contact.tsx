@@ -46,7 +46,7 @@ export default function Contact() {
       <Navbar />
 
       {/* ================= 3D GET IN TOUCH ================= */}
-      <section className="relative pt-32 pb-28 overflow-hidden">
+     <section className="relative pt-32 pb-28 overflow-hidden bg-gradient-to-br from-[#1e293b] via-[#1b3358] to-[#0f172a]">
         <div className="perspective-[1200px]"></div>
         {/* Morphing spheres */}
         <div className="absolute inset-0 -z-10">
@@ -58,10 +58,12 @@ export default function Contact() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold text-center mb-16"
+            className="text-4xl md:text-5xl font-bold text-center mb-6"
           >
             Get in <span className="text-blue-500">Touch</span>
           </motion.h1>
+          <div className="gold-divider"></div>
+
 
           {/* Contact Cards */}
           <div className="grid md:grid-cols-3 gap-10 perspective-1000">
