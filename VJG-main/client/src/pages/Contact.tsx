@@ -23,12 +23,12 @@ export default function Contact() {
   const createInquiry = useCreateInquiry();
 
   const form = useForm<InsertInquiry>({
-  defaultValues: { name: "", email: "", phone: "", message: "" }
-});
+    defaultValues: { name: "", email: "", phone: "", message: "" }
+  });
 
   const onSubmit = async (data: InsertInquiry) => {
     try {
-      const res = await fetch("/api/inquiries", {
+      const res = await fetch("/api/contact", { // <- updated endpoint
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
