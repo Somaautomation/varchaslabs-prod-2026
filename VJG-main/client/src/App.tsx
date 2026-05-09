@@ -1,9 +1,11 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
+import { useEffect, useState } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { TopProgressBar } from "@/components/AILoaders";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -43,11 +45,23 @@ function Router() {
   );
 }
 
+function RouteProgress() {
+  const [location] = useLocation();
+  const [active, setActive] = useState(false);
+  useEffect(() => {
+    setActive(true);
+    const t = window.setTimeout(() => setActive(false), 600);
+    return () => window.clearTimeout(t);
+  }, [location]);
+  return <TopProgressBar active={active} />;
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <RouteProgress />
         <Router />
         <WhatsAppButton />
       </TooltipProvider>
