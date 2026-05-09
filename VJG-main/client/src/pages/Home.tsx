@@ -49,7 +49,27 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     { name: "Deloitte", logo: "https://upload.wikimedia.org/wikipedia/commons/5/56/Deloitte.svg" },
     { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg" },
     { name: "HP", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" },
-    { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" }
+    { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" },
+    { name: "Intel", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg" },
+    { name: "VMware", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Vmware.svg" },
+    { name: "ServiceNow", logo: "https://upload.wikimedia.org/wikipedia/commons/5/57/ServiceNow_logo.svg" },
+    { name: "Zoho", logo: "https://upload.wikimedia.org/wikipedia/commons/3/30/ZOHO_logo_2023.svg" },
+    { name: "DXC Technology", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/DXC_Technology_logo.svg" },
+    { name: "EPAM", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1a/EPAM_logo.svg" },
+    { name: "LTIMindtree", logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/LTIMindtree_logo.svg" },
+    { name: "Mphasis", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Mphasis_Logo.svg" },
+    { name: "Kroger", logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/Kroger_logo.svg" },
+    { name: "Tesco", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Tesco_Logo.svg" },
+    { name: "Walmart", logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Walmart_logo.svg" },
+    { name: "Target", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Target_logo.svg" },
+    { name: "Flipkart", logo: "https://upload.wikimedia.org/wikipedia/commons/1/10/Flipkart_logo.svg" },
+    { name: "eBay", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" },
+    { name: "JPMorgan Chase", logo: "https://upload.wikimedia.org/wikipedia/commons/a/af/J.P._Morgan_Logo_2008_1.svg" },
+    { name: "Goldman Sachs", logo: "https://upload.wikimedia.org/wikipedia/commons/6/61/Goldman_Sachs.svg" },
+    { name: "HSBC", logo: "https://upload.wikimedia.org/wikipedia/commons/a/aa/HSBC_logo_%282018%29.svg" },
+    { name: "Citibank", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Citi.svg" },
+    { name: "HDFC Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg" },
+    { name: "ICICI Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/1/12/ICICI_Bank_Logo.svg" }
   ];
 
   return (
