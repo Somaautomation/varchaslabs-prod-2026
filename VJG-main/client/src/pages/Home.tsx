@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+
 import { Link } from "wouter";
 import { ArrowRight, CheckCircle2, Trophy, Users, Briefcase, GraduationCap, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Rocket, ChevronRight, Handshake } from "lucide-react";
 import { Code2, Scale } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Home() {
   const fadeInUp = {
@@ -155,7 +157,7 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       <div className="absolute -inset-4 bg-gradient-to-r from-primary to-accent opacity-30 blur-2xl rounded-full" />
       <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
         {/* UPDATED STATS */}
-        <div className="grid grid-cols-2 gap-8">
+        <div className="flex flex-nowrap gap-6 overflow-x-auto">
           <StatCard number="500+" label="Engineers Trained & Deployed" icon={<Users className="text-cyan-400" />} />
           <StatCard number="50+" label="Software Projects Delivered" icon={<Briefcase className="text-blue-400" />} />
           <StatCard number="200+" label="Client & Hiring Partners" icon={<Handshake className="text-green-400" />} />
@@ -439,9 +441,30 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
               Careers
             </h2>
             <p className="text-slate-600 text-lg">
-              Explore immediate opportunities with our premium hiring partners.
+              Explore exciting career opportunities with leading technology companies.
             </p>
           </div>
+          <div className="flex flex-col md:flex-row gap-4 justify-center mb-12">
+  <input
+      type="text"
+      placeholder="Search job title..."
+      className="border border-slate-200 rounded-lg px-4 py-2 w-full md:w-64"
+    />
+
+    <select className="border border-slate-200 rounded-lg px-4 py-2 w-full md:w-48">
+      <option>All Locations</option>
+      <option>Bangalore</option>
+      <option>Hyderabad</option>
+      <option>Remote</option>
+    </select>
+
+    <select className="border border-slate-200 rounded-lg px-4 py-2 w-full md:w-48">
+      <option>Job Type</option>
+      <option>Full Time</option>
+      <option>Contract</option>
+      <option>Permanent</option>
+    </select>
+  </div>
 
           <motion.div 
             variants={staggerContainer}
@@ -468,6 +491,49 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
               </motion.div>
             ))}
           </motion.div>
+          {/* TECHNOLOGIES WE HIRE FOR */}
+<div className="mt-20">
+  <div className="text-center max-w-3xl mx-auto mb-10">
+    <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
+      Technologies We Hire For
+    </h3>
+    <p className="text-slate-600 mt-3">
+      We provide highly skilled software professionals across various technologies.
+    </p>
+  </div>
+
+  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    
+    <div className="bg-white border border-slate-100 rounded-xl p-4 text-center shadow-sm">
+      Full Stack Developers
+    </div>
+
+    <div className="bg-white border border-slate-100 rounded-xl p-4 text-center shadow-sm">
+      Frontend & Backend Engineers
+    </div>
+
+    <div className="bg-white border border-slate-100 rounded-xl p-4 text-center shadow-sm">
+      QA & Automation Testers
+    </div>
+
+    <div className="bg-white border border-slate-100 rounded-xl p-4 text-center shadow-sm">
+      DevOps Engineers
+    </div>
+
+    <div className="bg-white border border-slate-100 rounded-xl p-4 text-center shadow-sm">
+      Cloud Engineers
+    </div>
+
+    <div className="bg-white border border-slate-100 rounded-xl p-4 text-center shadow-sm">
+      Data Engineers & AI Specialists
+    </div>
+
+    <div className="bg-white border border-slate-100 rounded-xl p-4 text-center shadow-sm sm:col-span-2 md:col-span-3">
+      Mobile App Developers
+    </div>
+
+  </div>
+</div>
         </div>
       </section>
 
@@ -576,5 +642,12 @@ const jobs = [
     type: "Contract",
     location: "Remote",
     description: "Urgent requirement for Automation Testers with Selenium and Java experience."
+  },
+  {
+    title: "Software Engineering Intern (QA & Development)",
+    type: "Internship",
+    location: "Bangalore / Remote",
+    description:
+      "Internship opportunity for students and freshers to work on real-time projects in Java, React, cloud technologies, and QA automation testing including Selenium and API testing.",
   }
 ];

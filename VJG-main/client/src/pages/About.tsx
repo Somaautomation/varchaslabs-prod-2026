@@ -40,13 +40,18 @@ function OurTeam() {
     },
     {
       name: "Jashmith S",
-      role: "CEO",
+      role: "Co-Founder",
       img: "/images/Jashmith.jpg",
     },
     {
       name: "Vasanthi P R",
-      role: "H R head",
+      role: "CEO & Designated Partner",
       img: "/images/Vasanthi.jpg",
+    },
+    {
+      name: "Lokesh S",
+      role: "CTO & Designated Partner",
+      img: "/images/Lokesh.jpg",
     },
   ];
   return (
@@ -83,7 +88,7 @@ function OurTeam() {
 
         {/* Team Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center"
+          className="flex flex-wrap md:flex-nowrap justify-center gap-10"
           variants={containerVariants}
         >
           {team.map((member) => (

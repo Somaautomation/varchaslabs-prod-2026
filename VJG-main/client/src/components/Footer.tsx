@@ -30,11 +30,32 @@ export default function Footer() {
           <div>
             <h3 className="font-display font-bold text-lg mb-6">Quick Links</h3>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="/courses" className="hover:text-primary transition-colors">All Courses</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Placement</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
+              <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
+
+<li>
+  <Link href="/about" className="hover:text-primary transition-colors">
+    About Us
+  </Link>
+</li>
+
+<li>
+  <Link href="/jobs" className="hover:text-primary transition-colors">
+    Job Openings
+  </Link>
+</li>
+
+<li>
+  <Link href="/contact" className="hover:text-primary transition-colors">
+    Contact
+  </Link>
+</li>
+
+<li>
+  <Link href="/get-started" className="hover:text-primary transition-colors">
+    Get Started
+  </Link>
+</li>
             </ul>
           </div>
 
@@ -42,11 +63,11 @@ export default function Footer() {
           <div>
             <h3 className="font-display font-bold text-lg mb-6">Our Services</h3>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li>Permanent Staffing</li>
-              <li>Contract Hiring</li>
-              <li>Executive Search</li>
-              <li>Career Counseling</li>
-              <li>Resume Building</li>
+            <li>IT Staffing Solutions</li>
+            <li>Software Engineer Deployment</li>
+            <li>Contract & Permanent Hiring</li>
+            <li>Dedicated Development Teams</li>
+            <li>Technical Talent Acquisition</li>
             </ul>
           </div>
 
