@@ -128,7 +128,7 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 
       {/* SECONDARY CTA (For Talent) */}
       <div className="flex flex-col sm:flex-row gap-4">
-        <Link href="/careers#jobs">
+        <Link href="/#jobs">
           <Button size="lg" variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-8 h-12 rounded-xl text-base backdrop-blur-sm">
             Browse Openings
             <ChevronRight className="w-4 h-4 ml-2" />

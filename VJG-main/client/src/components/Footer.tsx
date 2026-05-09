@@ -32,30 +32,10 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-slate-400">
               <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
               <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
-
-<li>
-  <Link href="/about" className="hover:text-primary transition-colors">
-    About Us
-  </Link>
-</li>
-
-<li>
-  <Link href="/jobs" className="hover:text-primary transition-colors">
-    Job Openings
-  </Link>
-</li>
-
-<li>
-  <Link href="/contact" className="hover:text-primary transition-colors">
-    Contact
-  </Link>
-</li>
-
-<li>
-  <Link href="/get-started" className="hover:text-primary transition-colors">
-    Get Started
-  </Link>
-</li>
+              <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link href="/#jobs" className="hover:text-primary transition-colors">Job Openings</Link></li>
+              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+              <li><Link href="/contact" className="hover:text-primary transition-colors">Get Started</Link></li>
             </ul>
           </div>
 
