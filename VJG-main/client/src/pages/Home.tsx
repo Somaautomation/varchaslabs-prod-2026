@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import LogoMarquee from "@/components/LogoMarquee";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -226,34 +227,82 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="border-b border-white/6 bg-[#071121] py-20">
-          <div className="container-wrapper space-y-10">
-            <SectionIntro
-              eyebrow="Trusted by"
-              title="Built for companies that need software to perform."
-              description="The brand is shifting from generic services to accountable product delivery. The homepage now leads with proof, systems, and enterprise readiness."
-            />
+        <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#0B0F19] py-24">
+          {/* Ambient gradient backdrop */}
+          <div className="pointer-events-none absolute inset-0 [background:radial-gradient(60%_50%_at_50%_0%,rgba(56,189,248,0.10),transparent_60%),radial-gradient(40%_40%_at_80%_100%,rgba(139,92,246,0.10),transparent_60%)]" />
+          <motion.div
+            aria-hidden
+            className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl"
+            animate={{ opacity: [0.5, 0.85, 0.5] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
 
-            <div className="grid gap-4 md:grid-cols-3">
-              {trustIndicators.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+          <div className="container-wrapper relative z-10 space-y-14">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="mx-auto max-w-3xl text-center"
+            >
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                </span>
+                Trusted by
+              </span>
+              <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-white md:text-4xl lg:text-[2.75rem]">
+                Built for companies that need software to perform.
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
+                The brand is shifting from generic services to accountable product delivery.
+                The homepage now leads with proof, systems, and enterprise readiness.
+              </p>
+            </motion.div>
+
+            {/* Premium logo marquee */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <LogoMarquee logos={trustedLogos} rows={2} speed={42} gap="3rem" />
+            </motion.div>
+
+            {/* Three enterprise content blocks */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.12 } },
+              }}
+              className="grid gap-5 md:grid-cols-3"
+            >
+              {trustBlocks.map((block) => (
+                <motion.div
+                  key={block.title}
+                  variants={fadeInUp}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  whileHover={{ y: -4 }}
+                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur-md transition-colors hover:border-cyan-400/40 hover:bg-white/[0.06]"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">
-                    <item.icon className="h-6 w-6" />
+                  <div className="pointer-events-none absolute -inset-1 opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:radial-gradient(280px_circle_at_var(--x,50%)_var(--y,50%),rgba(56,189,248,0.18),transparent_60%)]" />
+                  <div className="relative">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-400/20 bg-gradient-to-br from-cyan-500/15 to-violet-500/15 text-cyan-300">
+                      <block.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-5 font-display text-xl font-semibold text-white">
+                      {block.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-300">{block.copy}</p>
                   </div>
-                  <h3 className="mt-5 text-xl font-display font-semibold text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-slate-300">{item.copy}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {companies.slice(0, 16).map((company) => (
-                <LogoTile key={company.name} company={company} />
-              ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -836,6 +885,27 @@ const trustIndicators: IconCopy[] = [
     copy: "The redesign introduces reusable section patterns that can scale across services, industries, case studies, and future content.",
     icon: Layers,
   },
+];
+
+const trustBlocks = trustIndicators;
+
+const trustedLogos: { name: string; logo: string }[] = [
+  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" },
+  { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
+  { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+  { name: "TCS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/TCS_Logo.svg" },
+  { name: "Infosys", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" },
+  { name: "Wipro", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" },
+  { name: "Accenture", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" },
+  { name: "IBM", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" },
+  { name: "Oracle", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" },
+  { name: "SAP", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" },
+  { name: "Adobe", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Adobe_Corporate_logo.svg" },
+  { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" },
+  { name: "Cognizant", logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/Cognizant_logo_2022.svg" },
+  { name: "HCL Technologies", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c5/HCL_Tech_Bee_Logo.svg" },
+  { name: "Tech Mahindra", logo: "https://upload.wikimedia.org/wikipedia/commons/3/38/Tech_Mahindra_New_Logo.svg" },
+  { name: "Capgemini", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Capgemini_201x_logo.svg" },
 ];
 
 const services: ServiceCardData[] = [
