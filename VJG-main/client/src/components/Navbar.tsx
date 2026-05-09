@@ -3,7 +3,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 type NavChild = { name: string; href: string; description?: string };
 type NavItem = { name: string; href?: string; children?: NavChild[] };
@@ -142,17 +142,23 @@ export default function Navbar() {
                   )}
                 >
                   {item.name}
-                  <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-180" />
                 </button>
-                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-64 -translate-x-1/2 translate-y-2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                  {item.children.map((c) => (
+                <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-64 -translate-x-1/2 translate-y-2 rounded-2xl border border-slate-200 bg-white/95 p-2 opacity-0 shadow-2xl backdrop-blur-md transition-all duration-300 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="pointer-events-none absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-slate-200 bg-white/95" />
+                  {item.children.map((c, ci) => (
                     <Link key={c.name} href={c.href}>
-                      <div className="cursor-pointer rounded-xl px-3 py-2.5 transition hover:bg-slate-50">
+                      <motion.div
+                        whileHover={{ x: 4 }}
+                        transition={{ type: "spring", stiffness: 320, damping: 20 }}
+                        className="cursor-pointer rounded-xl px-3 py-2.5 transition hover:bg-gradient-to-r hover:from-cyan-50 hover:to-violet-50"
+                        style={{ animationDelay: `${ci * 40}ms` }}
+                      >
                         <div className="text-sm font-semibold text-slate-900">{c.name}</div>
                         {c.description && (
                           <div className="text-xs text-slate-500">{c.description}</div>
                         )}
-                      </div>
+                      </motion.div>
                     </Link>
                   ))}
                 </div>
@@ -168,7 +174,7 @@ export default function Navbar() {
                   {item.name}
                   <span
                     className={cn(
-                      "absolute -bottom-1 left-0 h-0.5 bg-cyan-400 transition-all duration-300",
+                      "absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-violet-400 transition-all duration-300",
                       isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
                     )}
                   />
@@ -177,17 +183,20 @@ export default function Navbar() {
             )
           )}
           <Link href="/contact">
-            <Button
-              size="sm"
-              className={cn(
-                "font-semibold shadow-lg transition-all hover:-translate-y-0.5",
-                scrolled
-                  ? "bg-gradient-to-r from-cyan-500 to-violet-500 text-white"
-                  : "bg-white text-slate-900 hover:bg-white/90"
-              )}
-            >
-              Get Started
-            </Button>
+            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.96 }}>
+              <Button
+                size="sm"
+                className={cn(
+                  "group relative overflow-hidden font-semibold shadow-lg transition-all",
+                  scrolled
+                    ? "bg-gradient-to-r from-cyan-500 to-violet-500 text-white shadow-cyan-500/20"
+                    : "bg-white text-slate-900 hover:bg-white/90"
+                )}
+              >
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                <span className="relative">Get Started</span>
+              </Button>
+            </motion.div>
           </Link>
         </nav>
 
@@ -202,9 +211,16 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Nav */}
-      {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white border-t shadow-lg animate-in slide-in-from-top-5 max-h-[80vh] overflow-y-auto">
-          <div className="container-wrapper py-6 flex flex-col gap-1">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="lg:hidden absolute top-full left-0 w-full bg-white border-t shadow-2xl max-h-[80vh] overflow-y-auto"
+          >
+            <div className="container-wrapper py-6 flex flex-col gap-1">
             {navItems.map((item) =>
               item.children ? (
                 <div key={item.name} className="border-b border-slate-100 last:border-0">
@@ -261,9 +277,10 @@ export default function Navbar() {
                 Get Started
               </Button>
             </Link>
-          </div>
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

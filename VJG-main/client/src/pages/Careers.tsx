@@ -78,8 +78,8 @@ export default function Careers() {
           title="A workplace built by engineers, for engineers"
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {values.map((v) => (
-            <GlassCard key={v.title}>
+          {values.map((v, i) => (
+            <GlassCard key={v.title} index={i}>
               <h3 className="font-display text-lg font-semibold text-white">{v.title}</h3>
               <p className="mt-2 text-sm text-slate-300">{v.desc}</p>
             </GlassCard>
@@ -95,8 +95,8 @@ export default function Careers() {
           description="Don't see your role? We're always interested in talking to senior engineers."
         />
         <div className="grid gap-4">
-          {openings.map((o) => (
-            <GlassCard key={o.title} className="!p-5">
+          {openings.map((o, i) => (
+            <GlassCard key={o.title} index={i} className="!p-5">
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div>
                   <h3 className="font-display text-lg font-semibold text-white">{o.title}</h3>

@@ -64,8 +64,8 @@ export default function Process() {
           title="Six stages, one outcome contract"
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {steps.map(({ icon: Icon, title, desc, deliverables }) => (
-            <GlassCard key={title}>
+          {steps.map(({ icon: Icon, title, desc, deliverables }, i) => (
+            <GlassCard key={title} index={i}>
               <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 text-cyan-300">
                 <Icon className="h-5 w-5" />
               </div>

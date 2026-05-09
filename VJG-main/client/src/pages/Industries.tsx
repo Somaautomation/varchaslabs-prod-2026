@@ -78,8 +78,8 @@ export default function Industries() {
           title="Eight industries, one delivery standard"
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {industries.map(({ icon: Icon, name, desc, proof }) => (
-            <GlassCard key={name}>
+          {industries.map(({ icon: Icon, name, desc, proof }, i) => (
+            <GlassCard key={name} index={i}>
               <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 text-cyan-300">
                 <Icon className="h-5 w-5" />
               </div>

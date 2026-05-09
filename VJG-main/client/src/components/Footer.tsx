@@ -7,7 +7,9 @@ import {
   Mail,
   Phone,
   MapPin,
+  ArrowUpRight,
 } from "lucide-react";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 const columns: { title: string; links: { name: string; href: string }[] }[] = [
@@ -43,8 +45,27 @@ const columns: { title: string; links: { name: string; href: string }[] }[] = [
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-white pt-16 pb-8 border-t border-white/10">
-      <div className="container-wrapper">
+    <footer className="relative bg-slate-950 text-white pt-16 pb-8 border-t border-white/10 overflow-hidden">
+      {/* Animated ambient glow */}
+      <motion.div
+        className="pointer-events-none absolute -top-40 left-1/4 h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-3xl"
+        animate={{ x: [0, 60, 0], y: [0, 30, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="pointer-events-none absolute -top-20 right-1/4 h-[360px] w-[360px] rounded-full bg-violet-500/10 blur-3xl"
+        animate={{ x: [0, -40, 0], y: [0, 20, 0] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute inset-x-0 top-0 h-px origin-left bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent"
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 1.2 }}
+      />
+
+      <div className="container-wrapper relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
@@ -66,8 +87,14 @@ export default function Footer() {
             </div>
           </div>
 
-          {columns.map((col) => (
-            <div key={col.title}>
+          {columns.map((col, ci) => (
+            <motion.div
+              key={col.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: ci * 0.08 }}
+            >
               <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-white mb-5">
                 {col.title}
               </h3>
@@ -76,14 +103,18 @@ export default function Footer() {
                   <li key={l.name}>
                     <Link
                       href={l.href}
-                      className="hover:text-cyan-300 transition-colors"
+                      className="group inline-flex items-center gap-1 hover:text-cyan-300 transition-colors"
                     >
-                      {l.name}
+                      <span className="relative">
+                        {l.name}
+                        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
+                      </span>
+                      <ArrowUpRight className="h-3 w-3 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -128,8 +159,13 @@ export default function Footer() {
 
 function SocialIcon({ icon }: { icon: ReactNode }) {
   return (
-    <div className="h-9 w-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white hover:border-cyan-400 transition-all cursor-pointer">
+    <motion.div
+      whileHover={{ y: -3, scale: 1.08 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 320, damping: 18 }}
+      className="h-9 w-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.45)] transition-colors cursor-pointer"
+    >
       {icon}
-    </div>
+    </motion.div>
   );
 }

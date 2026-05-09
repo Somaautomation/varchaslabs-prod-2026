@@ -93,8 +93,8 @@ export default function CaseStudies() {
           title="Six stories. Six measurable wins."
         />
         <div className="grid gap-6 md:grid-cols-2">
-          {studies.map((s) => (
-            <GlassCard key={s.title}>
+          {studies.map((s, i) => (
+            <GlassCard key={s.title} index={i}>
               <div className="mb-3 flex items-center justify-between">
                 <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-cyan-300">
                   {s.industry}

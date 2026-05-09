@@ -65,8 +65,8 @@ export default function Blog() {
           title="Recent posts"
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {posts.map((p) => (
-            <GlassCard key={p.title}>
+          {posts.map((p, i) => (
+            <GlassCard key={p.title} index={i}>
               <span className="rounded-full border border-violet-400/30 bg-violet-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-violet-300">
                 {p.tag}
               </span>

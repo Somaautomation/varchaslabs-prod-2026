@@ -79,8 +79,8 @@ export default function Solutions() {
           description="Composable engagements you can mix and match — staffed with senior engineers, governed by measurable outcomes."
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {solutions.map(({ icon: Icon, title, desc, bullets }) => (
-            <GlassCard key={title}>
+          {solutions.map(({ icon: Icon, title, desc, bullets }, i) => (
+            <GlassCard key={title} index={i}>
               <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 text-cyan-300">
                 <Icon className="h-5 w-5" />
               </div>

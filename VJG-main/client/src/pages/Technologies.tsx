@@ -97,8 +97,8 @@ export default function Technologies() {
           title="Six capability groups, hundreds of tools mastered"
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {groups.map((g) => (
-            <GlassCard key={g.name}>
+          {groups.map((g, i) => (
+            <GlassCard key={g.name} index={i}>
               <h3 className="font-display text-lg font-semibold text-white">{g.name}</h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {g.items.map((i) => (
