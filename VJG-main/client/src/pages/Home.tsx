@@ -1045,58 +1045,70 @@ const industries: IconCopy[] = [
 
 const caseStudies: CaseStudy[] = [
   {
-    category: "SaaS platform",
-    title: "Scaled a product experience for faster release velocity",
-    summary: "The new case-study style emphasizes business context, delivery intervention, and measurable outcomes instead of generic project summaries.",
-    before: "Product updates were slowed by inconsistent UI patterns, brittle frontend flows, and limited QA coverage.",
-    after: "Reusable design and engineering systems improved velocity, reduced regressions, and gave the team clearer release confidence.",
+    category: "Banking · Payments core",
+    title: "Cut payment failures by 38% with an event-driven core",
+    summary:
+      "A top-5 Indian private bank needed to launch new products faster without destabilizing an aging payments switch. We rebuilt the core around Kafka and a domain-driven service mesh, then migrated traffic incrementally behind feature flags.",
+    before:
+      "A monolithic payment switch caused recurring failures during peak load, blocked product launches, and required weeks of release coordination across 6 teams.",
+    after:
+      "An event-driven payments core processes traffic with sub-second latency, deploys multiple times per day, and ships new schemes in weeks instead of quarters.",
     metrics: [
-      { label: "Release cycle improvement", value: "35%" },
-      { label: "QA regression time saved", value: "42%" },
-      { label: "UX consistency score", value: "2.4x" },
+      { label: "Payment failures", value: "-38%" },
+      { label: "Time-to-launch", value: "4x faster" },
+      { label: "Infra cost", value: "-22%" },
     ],
   },
   {
-    category: "Enterprise workflow",
-    title: "Modernized an internal operations platform",
-    summary: "The redesign introduces more enterprise-style proof blocks that explain how system work improves efficiency and decision-making.",
-    before: "Manual reporting, disconnected internal tools, and unclear process ownership created daily operational friction.",
-    after: "A streamlined workflow platform improved visibility, reduced admin effort, and created room for future automation.",
+    category: "Retail · Search & personalization",
+    title: "300M+ shoppers, sub-200ms search at peak",
+    summary:
+      "A global omnichannel retailer's catalog had outgrown its legacy search. We designed a hybrid lexical + vector retrieval platform with personalized re-ranking, hardened it for Black-Friday traffic, and instrumented it end-to-end.",
+    before:
+      "Search latency spiked above 1.2s during peak hours, conversion dropped on long-tail queries, and the merchandising team had no levers to tune ranking.",
+    after:
+      "p95 search latency held under 200ms at peak, conversion lifted on long-tail queries, and merchandisers gained a self-serve ranking studio.",
     metrics: [
-      { label: "Manual ops reduced", value: "48%" },
-      { label: "Reporting speed", value: "3x" },
-      { label: "Stakeholder visibility", value: "Always-on" },
+      { label: "Search p95", value: "180ms" },
+      { label: "Conversion lift", value: "+14%" },
+      { label: "Catalog scale", value: "20M SKUs" },
     ],
   },
   {
-    category: "Customer experience",
-    title: "Improved performance and trust in a customer-facing product",
-    summary: "The page now supports storytelling around performance, quality, and measurable UX improvements that buyers can evaluate quickly.",
-    before: "Slow experiences, weak hierarchy, and inconsistent quality lowered confidence in the product journey.",
-    after: "Sharper UX, performance-focused delivery, and QA discipline improved usability and stakeholder confidence.",
+    category: "Healthcare · AI copilot",
+    title: "HIPAA-grade RAG copilot grounded in 12M docs",
+    summary:
+      "A US digital health platform needed a clinician-facing copilot that could answer with citations across 12M internal documents. We built a role-aware RAG pipeline with an evaluation harness and a guardrail layer for PHI.",
+    before:
+      "Clinicians spent 20+ minutes per case searching across siloed knowledge bases, with no audit trail and inconsistent answer quality.",
+    after:
+      "A production copilot delivers citation-backed answers in seconds, with PHI redaction, role-aware retrieval, and a regression-tested evaluation suite.",
     metrics: [
-      { label: "Page speed gain", value: "38%" },
-      { label: "Conversion lift", value: "21%" },
-      { label: "Support issues", value: "-29%" },
+      { label: "Answer accuracy", value: "92%" },
+      { label: "Hallucination rate", value: "<3%" },
+      { label: "Time-to-answer", value: "-87%" },
     ],
   },
 ];
 
 const testimonials = [
   {
-    quote: "Varchas Labs brought structure, speed, and delivery confidence to a product initiative that had previously stalled.",
-    name: "Founder, SaaS company",
-    role: "Product-led growth team",
+    quote:
+      "VarchasLabs felt like an extension of our platform team from week one. They unblocked our payments modernization in a quarter — work that had been stuck for over a year.",
+    name: "SVP, Engineering",
+    role: "Top-5 Indian private bank",
   },
   {
-    quote: "Their combination of UX clarity, engineering quality, and QA discipline made them feel like a true product partner.",
-    name: "VP Product, enterprise client",
-    role: "Platform transformation program",
+    quote:
+      "Their senior engineers don't just write code — they raise the bar on design, security, and observability across the team. Our internal review velocity has visibly improved.",
+    name: "VP Product",
+    role: "Global omnichannel retailer",
   },
   {
-    quote: "They did not just build screens. They helped us make stronger product decisions and ship with less uncertainty.",
-    name: "CTO, digital platform",
-    role: "Modernization initiative",
+    quote:
+      "Shipping a HIPAA-grade RAG copilot in 90 days sounded impossible. VarchasLabs delivered it with an evaluation harness we still use to ship safely every week.",
+    name: "CTO",
+    role: "US digital health platform",
   },
 ];
 
