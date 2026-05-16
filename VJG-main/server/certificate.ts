@@ -1,6 +1,44 @@
 import { PDFDocument, StandardFonts, rgb, degrees } from "pdf-lib";
 import QRCode from "qrcode";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import type { Intern, Certificate } from "@shared/schema";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const SIG_DIR = path.resolve(__dirname, "assets", "signatures");
+
+/**
+ * Try to load a signature image (PNG or JPG) from server/assets/signatures/.
+ * Returns the embedded PDF image + intrinsic dimensions, or null if not found.
+ */
+async function loadSignatureImage(
+  doc: PDFDocument,
+  baseName: string,
+): Promise<{ img: any; width: number; height: number } | null> {
+  const candidates = [
+    `${baseName}.png`,
+    `${baseName}.PNG`,
+    `${baseName}.jpg`,
+    `${baseName}.jpeg`,
+  ];
+  for (const file of candidates) {
+    const full = path.join(SIG_DIR, file);
+    if (!fs.existsSync(full)) continue;
+    try {
+      const bytes = fs.readFileSync(full);
+      const lower = file.toLowerCase();
+      const img =
+        lower.endsWith(".png")
+          ? await doc.embedPng(bytes)
+          : await doc.embedJpg(bytes);
+      return { img, width: img.width, height: img.height };
+    } catch (e) {
+      console.warn(`[cert] failed to embed signature ${file}:`, e);
+    }
+  }
+  return null;
+}
 
 const fmtDate = (d: Date | string) =>
   new Date(d).toLocaleDateString("en-IN", {
@@ -88,20 +126,50 @@ export async function generateCertificatePdf(
     color: rgb(0.85, 0.85, 0.9),
   });
 
-  // Gold seal placeholder (top-right)
-  page.drawCircle({
-    x: width - 80,
-    y: height - 70,
-    size: 28,
-    color: gold,
-  });
-  page.drawText("SEAL", {
-    x: width - 95,
-    y: height - 74,
-    size: 9,
-    font: fontBold,
-    color: navy,
-  });
+  // Logo (top-right) — falls back to gold seal if file missing
+  const logoPath = path.resolve(
+    __dirname,
+    "..",
+    "client",
+    "public",
+    "images",
+    "logo.png",
+  );
+  let logoDrawn = false;
+  if (fs.existsSync(logoPath)) {
+    try {
+      const logoBytes = fs.readFileSync(logoPath);
+      const logoImg = await doc.embedPng(logoBytes);
+      const maxLogo = 64;
+      const scale = Math.min(maxLogo / logoImg.width, maxLogo / logoImg.height);
+      const lw = logoImg.width * scale;
+      const lh = logoImg.height * scale;
+      page.drawImage(logoImg, {
+        x: width - 60 - lw,
+        y: height - 70 - lh / 2,
+        width: lw,
+        height: lh,
+      });
+      logoDrawn = true;
+    } catch (e) {
+      console.warn("[cert] failed to embed logo:", e);
+    }
+  }
+  if (!logoDrawn) {
+    page.drawCircle({
+      x: width - 80,
+      y: height - 70,
+      size: 28,
+      color: gold,
+    });
+    page.drawText("SEAL", {
+      x: width - 95,
+      y: height - 74,
+      size: 9,
+      font: fontBold,
+      color: navy,
+    });
+  }
 
   // Title
   const title = "Certificate of Internship";
@@ -167,22 +235,56 @@ export async function generateCertificatePdf(
 
   // Signature blocks
   const sigY = 110;
+  const sigBoxW = 170; // width between line endpoints
+  const sigBoxH = 40;  // max height for signature image above the line
+
+  // Helper to draw a signature image scaled to fit inside the signature box
+  const drawSig = (
+    sig: { img: any; width: number; height: number } | null,
+    lineStartX: number,
+  ) => {
+    if (!sig) return;
+    const scale = Math.min(sigBoxW / sig.width, sigBoxH / sig.height);
+    const drawW = sig.width * scale;
+    const drawH = sig.height * scale;
+    page.drawImage(sig.img, {
+      x: lineStartX + (sigBoxW - drawW) / 2,
+      y: sigY + 4,
+      width: drawW,
+      height: drawH,
+    });
+  };
+
+  // Load signature images (optional). Place PNGs at:
+  //   server/assets/signatures/authorized.png
+  //   server/assets/signatures/mentor.png  (generic fallback)
+  //   server/assets/signatures/<mentor-name-slug>.png  (per-mentor override)
+  const mentorSlug = (intern.mentorName || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  const authorizedSig = await loadSignatureImage(doc, "authorized");
+  const mentorSig =
+    (mentorSlug && (await loadSignatureImage(doc, mentorSlug))) ||
+    (await loadSignatureImage(doc, "mentor"));
+
   // Left signature
+  drawSig(authorizedSig, 100);
   page.drawLine({
     start: { x: 100, y: sigY },
     end: { x: 270, y: sigY },
     thickness: 1,
     color: ink,
   });
-  page.drawText("Authorized Signatory", {
-    x: 130,
+  page.drawText("Vasanthi P R", {
+    x: 145,
     y: sigY - 14,
-    size: 10,
+    size: 11,
     font: fontBold,
     color: ink,
   });
-  page.drawText("Varchas Labs Pvt Ltd", {
-    x: 132,
+  page.drawText("Authorized Signatory, Varchas Labs Pvt Ltd", {
+    x: 100,
     y: sigY - 28,
     size: 9,
     font: fontReg,
@@ -190,6 +292,7 @@ export async function generateCertificatePdf(
   });
 
   // Right signature (mentor)
+  drawSig(mentorSig, width - 270);
   page.drawLine({
     start: { x: width - 270, y: sigY },
     end: { x: width - 100, y: sigY },
