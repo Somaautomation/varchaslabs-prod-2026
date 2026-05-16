@@ -5,9 +5,15 @@ import path from "path";
 import { fileURLToPath } from "url";
 import type { Intern, Certificate } from "@shared/schema";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SIG_DIR = path.resolve(__dirname, "assets", "signatures");
-const PUBLIC_IMG_DIR = path.resolve(__dirname, "..", "client", "public", "images");
+// Resolve the directory of this file in a way that works in both ESM (dev via tsx)
+// and CJS (production bundle from esbuild). In CJS, __dirname is provided
+// natively and import.meta.url is empty.
+const here =
+  typeof __dirname !== "undefined"
+    ? __dirname
+    : path.dirname(fileURLToPath(import.meta.url));
+const SIG_DIR = path.resolve(here, "assets", "signatures");
+const PUBLIC_IMG_DIR = path.resolve(here, "..", "client", "public", "images");
 
 /**
  * Try to load a signature image (PNG or JPG).
