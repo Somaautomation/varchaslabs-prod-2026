@@ -7,34 +7,43 @@ import type { Intern, Certificate } from "@shared/schema";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SIG_DIR = path.resolve(__dirname, "assets", "signatures");
+const PUBLIC_IMG_DIR = path.resolve(__dirname, "..", "client", "public", "images");
 
 /**
- * Try to load a signature image (PNG or JPG) from server/assets/signatures/.
- * Returns the embedded PDF image + intrinsic dimensions, or null if not found.
+ * Try to load a signature image (PNG or JPG).
+ * Looks first in server/assets/signatures/, then in client/public/images/.
+ * For the "authorized" signature, also tries the special Vasanthi-Sig file.
  */
 async function loadSignatureImage(
   doc: PDFDocument,
   baseName: string,
 ): Promise<{ img: any; width: number; height: number } | null> {
-  const candidates = [
+  const names = [
     `${baseName}.png`,
     `${baseName}.PNG`,
     `${baseName}.jpg`,
     `${baseName}.jpeg`,
   ];
-  for (const file of candidates) {
-    const full = path.join(SIG_DIR, file);
-    if (!fs.existsSync(full)) continue;
-    try {
-      const bytes = fs.readFileSync(full);
-      const lower = file.toLowerCase();
-      const img =
-        lower.endsWith(".png")
-          ? await doc.embedPng(bytes)
-          : await doc.embedJpg(bytes);
-      return { img, width: img.width, height: img.height };
-    } catch (e) {
-      console.warn(`[cert] failed to embed signature ${file}:`, e);
+  // Special-case mappings for known signatures shipped in client/public/images.
+  if (baseName === "authorized") {
+    names.push("Vasanthi-Sig.png.png", "Vasanthi-Sig.png", "vasanthi-sig.png");
+  }
+  const dirs = [SIG_DIR, PUBLIC_IMG_DIR];
+  for (const dir of dirs) {
+    for (const file of names) {
+      const full = path.join(dir, file);
+      if (!fs.existsSync(full)) continue;
+      try {
+        const bytes = fs.readFileSync(full);
+        const lower = file.toLowerCase();
+        const img =
+          lower.endsWith(".png") || lower.endsWith(".png.png")
+            ? await doc.embedPng(bytes)
+            : await doc.embedJpg(bytes);
+        return { img, width: img.width, height: img.height };
+      } catch (e) {
+        console.warn(`[cert] failed to embed signature ${full}:`, e);
+      }
     }
   }
   return null;
