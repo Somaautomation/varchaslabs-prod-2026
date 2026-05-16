@@ -21,6 +21,11 @@ import Blog from "@/pages/Blog";
 import Support from "@/pages/Support";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
+import VerifyCertificate from "@/pages/VerifyCertificate";
+import AdminLogin from "@/pages/admin/AdminLogin";
+import AdminDashboard from "@/pages/admin/AdminDashboard";
+import AdminInterns from "@/pages/admin/AdminInterns";
+import AdminCertificates from "@/pages/admin/AdminCertificates";
 
 
 function Router() {
@@ -40,6 +45,12 @@ function Router() {
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
       <Route path="/contact" component={Contact} />
+      <Route path="/verify" component={VerifyCertificate} />
+      <Route path="/verify/:id" component={VerifyCertificate} />
+      <Route path="/admin/login" component={AdminLogin} />
+      <Route path="/admin" component={AdminDashboard} />
+      <Route path="/admin/interns" component={AdminInterns} />
+      <Route path="/admin/certificates" component={AdminCertificates} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
 import nodemailer from "nodemailer";
+import { registerInternshipRoutes } from "./internshipRoutes";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -58,6 +59,9 @@ export async function registerRoutes(
       res.status(500).json({ message: "Internal server error" });
     }
   });
+
+  // Internship Certificate Management System
+  registerInternshipRoutes(app);
 
   return httpServer;
 }

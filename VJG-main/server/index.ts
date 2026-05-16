@@ -2,6 +2,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import { ensureSeedAdmin } from "./auth";
 
 const app = express();
 const httpServer = createServer(app);
@@ -64,6 +65,13 @@ app.use((req, res, next) => {
 
 (async () => {
   await registerRoutes(httpServer, app);
+
+  // Seed default admin if none exists (safe no-op afterwards).
+  try {
+    await ensureSeedAdmin();
+  } catch (err) {
+    console.error("[startup] ensureSeedAdmin failed:", err);
+  }
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
