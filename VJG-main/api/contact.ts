@@ -1,47 +1,50 @@
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer from "nodemailer";
 
-export default async function handler(req: any, res: any) {
+export default async function handler(
+  req: VercelRequest,
+  res: VercelResponse
+) {
   if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed" });
-    return;
+    return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const { name, email, phone, message } = req.body || {};
+  const { name, email, phone, message } = req.body;
 
-  if (!name || !email || !message) {
-    res.status(400).json({ error: "Missing required fields" });
-    return;
+  if (!name || !email || !phone || !message) {
+    return res.status(400).json({ message: "All fields required" });
   }
-
-  const transporter = nodemailer.createTransport({
-    host: "smtp.zoho.in",
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.ZOHO_USER,
-      pass: process.env.ZOHO_PASS,
-    },
-  });
-
-  const mailText = `
-Name: ${name}
-Email: ${email}
-Phone: ${phone || "N/A"}
-Message:
-${message}
-`;
 
   try {
-    await transporter.sendMail({
-      from: `"${name}" <${process.env.ZOHO_USER}>`,
-      to: process.env.ZOHO_USER,
-      subject: "New Contact Form Submission",
-      text: mailText,
-      replyTo: email,
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: false, // 587 = false
+      auth: {
+        user: process.env.SMTP_EMAIL,
+        pass: process.env.SMTP_PASSWORD,
+      },
     });
-    res.status(200).json({ ok: true });
-  } catch (err) {
-    console.error("Mail error:", err);
-    res.status(500).json({ error: "Failed to send email" });
+
+    await transporter.sendMail({
+      from: process.env.SMTP_EMAIL,
+      to: process.env.RECEIVER_EMAIL,
+      subject: `New Inquiry from ${name}`,
+      replyTo: email,
+      html: `
+        <h3>New Contact Form Submission</h3>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Phone:</b> ${phone}</p>
+        <p><b>Message:</b></p>
+        <p>${message}</p>
+      `,
+    });
+
+    return res.status(200).json({ success: true });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Email failed" });
   }
 }

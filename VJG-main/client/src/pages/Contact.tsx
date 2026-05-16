@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   motion,
@@ -9,6 +10,16 @@ import {
   useTransform,
   type Variants,
 } from "framer-motion";
+=======
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useCreateInquiry } from "@/hooks/use-inquiries";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+>>>>>>> Stashed changes
 import {
   Mail,
   Phone,

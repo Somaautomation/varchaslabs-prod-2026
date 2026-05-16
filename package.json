@@ -9,5 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "nodemailer": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^7.0.9"
+  }
 }
