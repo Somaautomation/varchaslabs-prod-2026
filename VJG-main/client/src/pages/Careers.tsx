@@ -40,6 +40,54 @@ const openings = [
     type: "Full-time",
     team: "Leadership",
   },
+  {
+    title: "Software Development Intern",
+    location: "Remote / Hybrid",
+    type: "Internship · 1 Year",
+    team: "Internship Program",
+  },
+  {
+    title: "Frontend Developer Intern",
+    location: "Remote / Hybrid",
+    type: "Internship · 1 Year",
+    team: "Internship Program",
+  },
+  {
+    title: "Backend Developer Intern",
+    location: "Remote / Hybrid",
+    type: "Internship · 1 Year",
+    team: "Internship Program",
+  },
+  {
+    title: "QA Testing Intern",
+    location: "Remote / Hybrid",
+    type: "Internship · 1 Year",
+    team: "Internship Program",
+  },
+  {
+    title: "UI/UX Design Intern",
+    location: "Remote / Hybrid",
+    type: "Internship · 1 Year",
+    team: "Internship Program",
+  },
+  {
+    title: "HR & Recruitment Intern",
+    location: "Remote / Hybrid",
+    type: "Internship · 1 Year",
+    team: "Internship Program",
+  },
+  {
+    title: "Scrum Master Intern",
+    location: "Remote / Hybrid",
+    type: "Internship · 1 Year",
+    team: "Internship Program",
+  },
+  {
+    title: "Digital Marketing Intern",
+    location: "Remote / Hybrid",
+    type: "Internship · 1 Year",
+    team: "Internship Program",
+  },
 ];
 
 const values = [
@@ -94,6 +142,43 @@ export default function Careers() {
           title="Currently hiring"
           description="Don't see your role? We're always interested in talking to senior engineers."
         />
+
+        <GlassCard className="!p-6 mb-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div>
+              <h3 className="font-display text-xl font-semibold text-white">
+                🚀 1-Year Internship Program
+              </h3>
+              <p className="mt-2 text-sm text-slate-300">
+                Kickstart your career with hands-on, live-project experience and mentorship from industry professionals.
+              </p>
+              <ul className="mt-3 grid gap-1.5 text-sm text-slate-400 sm:grid-cols-2">
+                <li>✅ Real-time project experience</li>
+                <li>✅ Mentorship from industry pros</li>
+                <li>✅ Internship Certificate</li>
+                <li>✅ Modern tech stack exposure</li>
+                <li>✅ Path to full-time employment</li>
+                <li>📍 Remote / Hybrid · 📅 1 Year</li>
+              </ul>
+              <p className="mt-3 text-xs text-slate-400">
+                Apply by emailing your resume to{" "}
+                <a
+                  href="mailto:info@varchaslabs.com?subject=Application for Internship"
+                  className="text-cyan-400 hover:underline"
+                >
+                  info@varchaslabs.com
+                </a>
+                {" "}with subject line: <em>Application for Internship – &lt;Role&gt;</em>
+              </p>
+            </div>
+            <a href="mailto:info@varchaslabs.com?subject=Application for Internship">
+              <Button className="bg-gradient-to-r from-cyan-500 to-violet-500 text-white hover:from-cyan-400 hover:to-violet-400">
+                Apply via Email <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
+          </div>
+        </GlassCard>
+
         <div className="grid gap-4">
           {openings.map((o, i) => (
             <GlassCard key={o.title} index={i} className="!p-5">
