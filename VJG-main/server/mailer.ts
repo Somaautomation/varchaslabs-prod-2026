@@ -4,10 +4,16 @@ let transporter: nodemailer.Transporter | null = null;
 
 export function getMailer() {
   if (transporter) return transporter;
+  const port = Number(process.env.SMTP_PORT || 465);
+  // 465 → implicit TLS (secure:true). 587 → STARTTLS (secure:false).
+  const secure =
+    process.env.SMTP_SECURE != null
+      ? process.env.SMTP_SECURE === "true"
+      : port === 465;
   transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || "smtp.zoho.in",
-    port: Number(process.env.SMTP_PORT || 465),
-    secure: true,
+    port,
+    secure,
     auth: {
       user: process.env.SMTP_EMAIL,
       pass: process.env.SMTP_PASSWORD,
