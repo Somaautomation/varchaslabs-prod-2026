@@ -6,19 +6,37 @@ export function getMailer() {
   if (transporter) return transporter;
   const port = Number(process.env.SMTP_PORT || 465);
   // 465 → implicit TLS (secure:true). 587 → STARTTLS (secure:false).
+  // SMTP_SECURE env can override (must be exactly "true" or "false").
   const secure =
-    process.env.SMTP_SECURE != null
-      ? process.env.SMTP_SECURE === "true"
-      : port === 465;
+    process.env.SMTP_SECURE === "true"
+      ? true
+      : process.env.SMTP_SECURE === "false"
+        ? false
+        : port === 465;
+
+  const host = process.env.SMTP_HOST || "smtp.zoho.in";
+  // eslint-disable-next-line no-console
+  console.log(
+    `[mailer] host=${host} port=${port} secure=${secure} user=${process.env.SMTP_EMAIL}`,
+  );
+
   transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || "smtp.zoho.in",
+    host,
     port,
     secure,
+    requireTLS: !secure, // for STARTTLS on 587
     auth: {
       user: process.env.SMTP_EMAIL,
       pass: process.env.SMTP_PASSWORD,
     },
   });
+
+  // Verify on startup; log success/failure but don't crash.
+  transporter.verify((err) => {
+    if (err) console.error("[mailer] verify FAILED:", err.message);
+    else console.log("[mailer] verify OK — SMTP ready");
+  });
+
   return transporter;
 }
 
