@@ -171,11 +171,11 @@ export default function Careers() {
                 {" "}with subject line: <em>Application for Internship – &lt;Role&gt;</em>
               </p>
             </div>
-            <a href="mailto:info@varchaslabs.com?subject=Application for Internship">
+            <Link href="/contact">
               <Button className="bg-gradient-to-r from-cyan-500 to-violet-500 text-white hover:from-cyan-400 hover:to-violet-400">
                 Apply via Email <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </a>
+            </Link>
           </div>
         </GlassCard>
 
