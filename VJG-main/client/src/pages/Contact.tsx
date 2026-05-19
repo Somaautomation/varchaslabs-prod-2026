@@ -1034,13 +1034,12 @@ function TrustPanel() {
         <h4 className="text-sm font-semibold text-white/85">Direct lines</h4>
         <ul className="mt-4 space-y-4 text-sm">
           <ContactLine Icon={Mail}  label="Email"   value="info@varchaslabs.com" href="mailto:info@varchaslabs.com" />
-          <ContactLine Icon={Phone} label="Call"    value="+91 63601 34569"      href="tel:+916360134569" />
           <ContactLine Icon={MapPin} label="Head Office" value="North Austin Tech Area, Austin, TX 78758, USA" />
           <ContactLine Icon={MapPin} label="India Office" value="K R Puram, Bengaluru" />
           <ContactLine Icon={Clock} label="Hours"   value="Mon–Sat · 9am – 7pm IST" />
         </ul>
         <div className="mt-6 flex items-center gap-3">
-          <Social Icon={Linkedin}  href="https://linkedin.com" />
+          <Social Icon={Linkedin}  href="https://www.linkedin.com/in/varchaslabs-pvt-ltd-5101773b1/" />
           <Social Icon={Github}    href="https://github.com" />
           <Social Icon={Twitter}   href="https://twitter.com" />
           <Social Icon={Instagram} href="https://instagram.com" />

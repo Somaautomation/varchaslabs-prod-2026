@@ -80,7 +80,7 @@ export default function Footer() {
               ship secure, scalable software with senior engineers and proven delivery models.
             </p>
             <div className="flex gap-3">
-              <SocialIcon icon={<Linkedin size={16} />} />
+              <SocialIcon icon={<Linkedin size={16} />} href="https://www.linkedin.com/in/varchaslabs-pvt-ltd-5101773b1/" label="LinkedIn" />
               <SocialIcon icon={<Twitter size={16} />} />
               <SocialIcon icon={<Facebook size={16} />} />
               <SocialIcon icon={<Instagram size={16} />} />
@@ -119,7 +119,7 @@ export default function Footer() {
         </div>
 
         {/* Contact strip */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-8 border-y border-white/10 text-sm text-slate-300">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-8 border-y border-white/10 text-sm text-slate-300">
           <div className="flex items-start gap-3">
             <MapPin className="h-5 w-5 text-cyan-400 shrink-0 mt-0.5" />
             <div>
@@ -133,12 +133,6 @@ export default function Footer() {
               <div className="text-xs uppercase tracking-wider text-cyan-300/80">India Office</div>
               <div>K R Puram, Bangalore 560049, India</div>
             </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Phone className="h-5 w-5 text-cyan-400 shrink-0" />
-            <a href="tel:+916360134569" className="hover:text-white">
-              +91 6360 134 569
-            </a>
           </div>
           <div className="flex items-center gap-3">
             <Mail className="h-5 w-5 text-cyan-400 shrink-0" />
@@ -167,8 +161,8 @@ export default function Footer() {
   );
 }
 
-function SocialIcon({ icon }: { icon: ReactNode }) {
-  return (
+function SocialIcon({ icon, href, label }: { icon: ReactNode; href?: string; label?: string }) {
+  const inner = (
     <motion.div
       whileHover={{ y: -3, scale: 1.08 }}
       whileTap={{ scale: 0.95 }}
@@ -178,4 +172,12 @@ function SocialIcon({ icon }: { icon: ReactNode }) {
       {icon}
     </motion.div>
   );
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+        {inner}
+      </a>
+    );
+  }
+  return inner;
 }

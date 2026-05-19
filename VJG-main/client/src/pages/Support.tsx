@@ -18,7 +18,7 @@ const channels = [
     icon: Phone,
     title: "Priority Hotline",
     desc: "For active engagements and production incidents.",
-    value: "+91 6360 134 569",
+    value: "Shared with active customers",
   },
   {
     icon: MessageSquare,
