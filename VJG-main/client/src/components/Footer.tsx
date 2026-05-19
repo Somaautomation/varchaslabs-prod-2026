@@ -119,10 +119,20 @@ export default function Footer() {
         </div>
 
         {/* Contact strip */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-8 border-y border-white/10 text-sm text-slate-300">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-8 border-y border-white/10 text-sm text-slate-300">
           <div className="flex items-start gap-3">
             <MapPin className="h-5 w-5 text-cyan-400 shrink-0 mt-0.5" />
-            <span>K R Puram, Bangalore 560049, India</span>
+            <div>
+              <div className="text-xs uppercase tracking-wider text-cyan-300/80">Head Office</div>
+              <div>North Austin Tech Area, Austin, TX 78758, USA</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <MapPin className="h-5 w-5 text-cyan-400 shrink-0 mt-0.5" />
+            <div>
+              <div className="text-xs uppercase tracking-wider text-cyan-300/80">India Office</div>
+              <div>K R Puram, Bangalore 560049, India</div>
+            </div>
           </div>
           <div className="flex items-center gap-3">
             <Phone className="h-5 w-5 text-cyan-400 shrink-0" />
