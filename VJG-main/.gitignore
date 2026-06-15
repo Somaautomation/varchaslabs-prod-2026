@@ -2,9 +2,15 @@ node_modules
 dist
 .DS_Store
 server/public
+server/venv
 vite.config.ts.*
 *.tar.gz
 
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
 # Environment files (never commit secrets)
 .env
 .env.local

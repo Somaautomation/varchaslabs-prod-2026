@@ -1,0 +1,17 @@
+.DS_Store
+.git-robot/
+
+# Defense-in-depth: never commit secrets anywhere in the tree
+.env
+.env.local
+.env.*.local
+
+# Node / build outputs (covered per-subdir too)
+node_modules/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
