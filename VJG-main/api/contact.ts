@@ -16,13 +16,21 @@ export default async function handler(
   }
 
   try {
-    const host = process.env.SMTP_HOST;
+    // Sensible defaults so the function works even if only the credentials
+    // are set in the Vercel project.
+    const host = process.env.SMTP_HOST || "smtp.zoho.in";
     const port = Number(process.env.SMTP_PORT || 587);
-    // Accept both naming conventions so the function works whether the project
-    // env defines SMTP_EMAIL/SMTP_PASSWORD (our docs) or SMTP_USER/SMTP_PASS
-    // (common Vercel template names).
-    const user = process.env.SMTP_EMAIL || process.env.SMTP_USER;
-    const pass = process.env.SMTP_PASSWORD || process.env.SMTP_PASS;
+    // Accept multiple env-name conventions: SMTP_EMAIL/SMTP_PASSWORD (docs),
+    // SMTP_USER/SMTP_PASS (common Vercel template), or ZOHO_USER/ZOHO_PASS
+    // (what this project happens to use in production).
+    const user =
+      process.env.SMTP_EMAIL ||
+      process.env.SMTP_USER ||
+      process.env.ZOHO_USER;
+    const pass =
+      process.env.SMTP_PASSWORD ||
+      process.env.SMTP_PASS ||
+      process.env.ZOHO_PASS;
     const to = process.env.RECEIVER_EMAIL || user;
 
     if (!host || !user || !pass || !to) {
