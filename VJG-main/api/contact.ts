@@ -16,19 +16,41 @@ export default async function handler(
   }
 
   try {
+    const host = process.env.SMTP_HOST;
+    const port = Number(process.env.SMTP_PORT || 587);
+    const user = process.env.SMTP_EMAIL;
+    const pass = process.env.SMTP_PASSWORD;
+    const to = process.env.RECEIVER_EMAIL;
+
+    if (!host || !user || !pass || !to) {
+      console.error("[contact] missing SMTP env vars", {
+        hasHost: !!host,
+        hasUser: !!user,
+        hasPass: !!pass,
+        hasTo: !!to,
+      });
+      return res.status(500).json({ message: "Email not configured" });
+    }
+
+    // 465 -> implicit TLS, 587 -> STARTTLS. SMTP_SECURE can override.
+    const secure =
+      process.env.SMTP_SECURE === "true"
+        ? true
+        : process.env.SMTP_SECURE === "false"
+          ? false
+          : port === 465;
+
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: false, // 587 = false
-      auth: {
-        user: process.env.SMTP_EMAIL,
-        pass: process.env.SMTP_PASSWORD,
-      },
+      host,
+      port,
+      secure,
+      requireTLS: !secure,
+      auth: { user, pass },
     });
 
     await transporter.sendMail({
-      from: process.env.SMTP_EMAIL,
-      to: process.env.RECEIVER_EMAIL,
+      from: user,
+      to,
       subject: `New Inquiry from ${name}`,
       replyTo: email,
       html: `
@@ -43,8 +65,15 @@ export default async function handler(
 
     return res.status(200).json({ success: true });
 
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    // Surface SMTP error details into Vercel logs without leaking to client.
+    console.error("[contact] sendMail failed", {
+      code: error?.code,
+      responseCode: error?.responseCode,
+      command: error?.command,
+      response: error?.response,
+      message: error?.message,
+    });
     return res.status(500).json({ message: "Email failed" });
   }
 }
