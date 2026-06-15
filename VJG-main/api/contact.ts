@@ -18,9 +18,12 @@ export default async function handler(
   try {
     const host = process.env.SMTP_HOST;
     const port = Number(process.env.SMTP_PORT || 587);
-    const user = process.env.SMTP_EMAIL;
-    const pass = process.env.SMTP_PASSWORD;
-    const to = process.env.RECEIVER_EMAIL;
+    // Accept both naming conventions so the function works whether the project
+    // env defines SMTP_EMAIL/SMTP_PASSWORD (our docs) or SMTP_USER/SMTP_PASS
+    // (common Vercel template names).
+    const user = process.env.SMTP_EMAIL || process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASSWORD || process.env.SMTP_PASS;
+    const to = process.env.RECEIVER_EMAIL || user;
 
     if (!host || !user || !pass || !to) {
       console.error("[contact] missing SMTP env vars", {
