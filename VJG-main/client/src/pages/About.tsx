@@ -34,16 +34,6 @@ const cardVariants = {
 function OurTeam() {
   const team = [
     {
-      name: "Varchas S",
-      role: "Founder",
-      img: "/images/Varchas.jpg",
-    },
-    {
-      name: "Jashmith S",
-      role: "Co-Founder",
-      img: "/images/Jashmith.jpg",
-    },
-    {
       name: "Vasanthi P R",
       role: "CEO & Designated Partner",
       img: "/images/Vasanthi.jpg",
