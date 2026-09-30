@@ -151,7 +151,7 @@ export default function Services() {
 
 /* ================= SUPPORT COMPONENTS ================= */
 
-function ServiceCheck({ label }) {
+function ServiceCheck({ label }: { label: string }) {
   return (
     <li className="flex items-center gap-3 text-slate-700 font-medium">
       <CheckCircle2 className="w-5 h-5 text-primary" />
@@ -160,7 +160,7 @@ function ServiceCheck({ label }) {
   );
 }
 
-function DetailCard({ title, description }) {
+function DetailCard({ title, description }: { title: string; description: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
