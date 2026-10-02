@@ -17,7 +17,22 @@ const industries = [
   {
     icon: Zap,
     name: "Utilities & Energy",
-    desc: "Potential engineering scope: power, smart metering, energy management, renewable energy, and utility software.",
+    desc: "Potential engineering scope: energy data platforms, smart metering, energy management, renewable energy, and utility software.",
+  },
+  {
+    icon: Zap,
+    name: "Power",
+    desc: "Potential engineering scope: power generation, distribution, grid monitoring, asset monitoring, and energy analytics.",
+  },
+  {
+    icon: Factory,
+    name: "Oil & Gas",
+    desc: "Potential engineering scope: operations software, IoT, asset monitoring, data platforms, and automation.",
+  },
+  {
+    icon: Building2,
+    name: "Water & Wastewater",
+    desc: "Potential engineering scope: water distribution, treatment utilities, monitoring, billing, and analytics platforms.",
   },
   {
     icon: Banknote,

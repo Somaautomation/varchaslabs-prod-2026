@@ -334,7 +334,7 @@ export default function Home() {
               title="Engineering support that fits the work ahead."
               description="Bring in a specialist, extend an existing engineering team, or outsource a complete technology project."
             />
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
               {engagementModels.map((model) => (
                 <motion.div
                   key={model.title}
@@ -598,6 +598,60 @@ export default function Home() {
                   <p className="mt-2 text-xs leading-5 text-slate-400">{copy}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-white/8 bg-[#071326] py-24">
+          <div className="container-wrapper">
+            <SectionIntro
+              eyebrow="Target organization examples"
+              title="Energy, Power, Oil & Gas and Water Organizations We Can Support"
+              description="VarchasLabs provides engineering and technology capabilities for organizations operating across power, energy, oil & gas, and water utilities. These examples describe target organization types, not confirmed clients."
+            />
+
+            <div className="mt-10 grid gap-5 lg:grid-cols-3">
+              {targetUtilityOrganizations.map((group) => (
+                <div key={group.title} className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+                  <h3 className="font-display text-lg font-semibold text-white">{group.title}</h3>
+                  <ul className="mt-4 space-y-2">
+                    {group.examples.map((example) => (
+                      <li key={example} className="flex items-start gap-2 text-sm leading-6 text-slate-300">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+                        {example}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 rounded-3xl border border-cyan-300/15 bg-slate-950/35 p-6 md:p-8">
+              <h3 className="font-display text-xl font-semibold text-white">Utility technology value chain</h3>
+              <p className="mt-2 max-w-4xl text-sm leading-7 text-slate-300">
+                VarchasLabs can provide engineering resources across application development, integration, QA automation, data engineering, cloud infrastructure, analytics, and AI.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-2">
+                {utilityValueChain.map((stage, index) => (
+                  <div key={stage} className="flex items-center gap-2">
+                    <span className="rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2 text-sm font-medium text-slate-100">{stage}</span>
+                    {index < utilityValueChain.length - 1 && <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 text-cyan-300/70" />}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 border-t border-white/10 pt-6">
+                <h4 className="text-sm font-semibold text-white">Our Engineering Capabilities for Utilities & Energy</h4>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {utilityCapabilities.map((capability) => (
+                    <span key={capability} className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-slate-200">{capability}</span>
+                  ))}
+                </div>
+              </div>
+              <Link href="/contact">
+                <Button className="mt-7 rounded-full bg-cyan-400 px-6 font-semibold text-slate-950 hover:bg-cyan-300">
+                  Outsource Your Engineering Project <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -1041,6 +1095,26 @@ const engagementModels: IconCopy[] = [
     icon: Workflow,
   },
   {
+    title: "QA & Test Automation Outsourcing",
+    copy: "Build and maintain automation frameworks, API and UI testing, performance testing, and CI/CD quality pipelines.",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Cloud & DevOps Engineering",
+    copy: "Add engineers for cloud infrastructure, deployment automation, monitoring, and DevOps workflows.",
+    icon: Cloud,
+  },
+  {
+    title: "Data & AI Engineering",
+    copy: "Outsource data engineering, analytics, dashboards, machine learning, and intelligent automation requirements.",
+    icon: Database,
+  },
+  {
+    title: "Technology Consulting & Partnerships",
+    copy: "Plan technical capabilities, team composition, and delivery approaches around your requirements.",
+    icon: Layers,
+  },
+  {
     title: "Train, Assess & Deploy",
     copy: "Develop technical skills, assess practical readiness, provide project exposure, and deploy qualified professionals.",
     icon: GraduationCap,
@@ -1206,6 +1280,33 @@ const domainCapabilities: IconCopy[] = [
     copy: "Digital health, connected products, manufacturing systems, IoT, and automation.",
     icon: Building2,
   },
+];
+
+const targetUtilityOrganizations = [
+  {
+    title: "Power & Energy",
+    examples: ["Tata Power", "JSW Energy", "Adani Energy Solutions"],
+  },
+  {
+    title: "Oil & Gas / Energy",
+    examples: ["Indian Oil Corporation (IndianOil)", "Bharat Petroleum (BPCL)", "Hindustan Petroleum (HPCL)", "Indian Oil-Adani Gas"],
+  },
+  {
+    title: "Water",
+    examples: ["American Water", "Indian municipal water utilities", "Municipal water supply & sewerage organizations", "Water distribution and treatment utilities"],
+  },
+];
+
+const utilityValueChain = [
+  "Smart Meter", "Gateway", "HES", "MDM", "Billing", "Data Platform", "Analytics", "Cloud", "AI",
+];
+
+const utilityCapabilities = [
+  "Smart Metering", "Advanced Metering Infrastructure (AMI)", "Meter Data Management (MDM)",
+  "Head-End Systems (HES)", "Utility Billing Systems", "Energy Data Platforms", "IoT", "Device Communication",
+  "Gateway Management", "Remote Monitoring", "Asset Monitoring", "Grid Monitoring",
+  "Energy Analytics", "Demand & Consumption Analytics", "Alerts & Notifications",
+  "Utility Dashboards", "Digital Transformation", "Integration Platforms", "API Integration",
 ];
 
 const industries: IconCopy[] = [

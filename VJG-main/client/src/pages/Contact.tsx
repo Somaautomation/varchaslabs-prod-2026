@@ -90,6 +90,9 @@ const INITIAL_FORM: FormState = {
 
 const INDUSTRIES = [
   "Energy & Utilities",
+  "Power",
+  "Oil & Gas",
+  "Water & Wastewater",
   "Banking & FinTech",
   "Retail & E-Commerce",
   "Healthcare",

@@ -116,12 +116,12 @@ export default function Technologies() {
       </Section>
       <Section>
         <SectionHeading
-          eyebrow="Industry-specific context"
-          title="Domain-aware engineering for specialized platforms"
-          description="For example, teams supporting energy and utilities may work with the systems, data, and integrations used across smart metering and utility platforms."
+            eyebrow="Industry-specific context"
+            title="Energy, power, oil & gas, and water utility systems"
+            description="Utilities and energy are one area our multi-industry teams can support with engineering resources for metering, data, devices, operations, and digital platforms."
         />
         <div className="flex flex-wrap gap-3">
-          {["Smart Metering", "AMI / AMR", "Head-End Systems (HES)", "Meter Data Management (MDM)", "Utility Billing", "Energy Management", "IoT", "Utility Analytics", "API Integration", "System Integration", "Digital Utility Platforms", "Cloud Utility Applications"].map((item) => (
+            {["Smart Metering", "Advanced Metering Infrastructure (AMI)", "Meter Data Management (MDM)", "Head-End Systems (HES)", "Utility Billing Systems", "Energy Data Platforms", "IoT", "Device Communication", "Gateway Management", "Remote Monitoring", "Asset Monitoring", "Grid Monitoring", "Energy Analytics", "Demand & Consumption Analytics", "Alerts & Notifications", "Utility Dashboards", "Digital Transformation", "Integration Platforms", "API Integration"].map((item) => (
             <span key={item} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200">
               {item}
             </span>
