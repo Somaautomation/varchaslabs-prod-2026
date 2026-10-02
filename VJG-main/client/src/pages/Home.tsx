@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import LogoMarquee from "@/components/LogoMarquee";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -36,6 +35,9 @@ import {
   Sparkles,
   Users,
   Workflow,
+  Zap,
+  Smartphone,
+  Palette,
 } from "lucide-react";
 
 const fadeInUp = {
@@ -86,34 +88,34 @@ export default function Home() {
               <motion.div variants={fadeInUp}>
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-4 py-2 text-sm text-slate-200 backdrop-blur">
                   <Sparkles className="h-4 w-4 text-cyan-300" />
-                  Product engineering for startups, scaleups, and enterprise teams
+                  Utility-domain engineering and outsourcing
                 </div>
               </motion.div>
 
               <motion.div variants={fadeInUp} className="space-y-6">
                 <h1 className="max-w-4xl text-5xl font-display font-bold leading-[1.02] text-white md:text-6xl lg:text-7xl">
-                  Design, build, and scale software products that move your business forward.
+                  Skilled Software Engineers for the Utility Industry
                 </h1>
                 <p className="max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
-                  Varchas Labs helps startups, scaleups, and enterprise teams turn ambitious ideas into production-ready digital products through UX strategy, modern engineering, QA automation, and scalable delivery systems.
+                  VarchasLabs provides trained software engineers and technology professionals to utility-domain companies through flexible outsourcing, staff augmentation, and dedicated engineering teams.
                 </p>
               </motion.div>
 
               <motion.div variants={fadeInUp} className="flex flex-col gap-4 sm:flex-row">
                 <Link href="/contact">
                   <Button className="h-14 rounded-full bg-cyan-400 px-8 text-base font-semibold text-slate-950 hover:bg-cyan-300">
-                    Start Your Project
+                    Hire Our Engineers
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <a href="#case-studies">
+                <Link href="/contact">
                   <Button
                     variant="outline"
                     className="h-14 rounded-full border-white/15 bg-white/5 px-8 text-base text-white hover:bg-white/10 hover:text-white"
                   >
-                    View Case Studies
+                    Contact Us
                   </Button>
-                </a>
+                </Link>
               </motion.div>
 
               <motion.div variants={fadeInUp} className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -250,14 +252,13 @@ export default function Home() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
                 </span>
-                Trusted by
+                Utility ecosystem
               </span>
               <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-white md:text-4xl lg:text-[2.75rem]">
-                Built for companies that need software to perform.
+                Organizations we support
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
-                The brand is shifting from generic services to accountable product delivery.
-                The homepage now leads with proof, systems, and enterprise readiness.
+                We support electricity, energy, gas, water, smart metering, and utility software organizations with engineering talent matched to their technology needs.
               </p>
             </motion.div>
 
@@ -268,7 +269,17 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <LogoMarquee logos={trustedLogos} rows={2} speed={42} gap="3rem" />
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {organizationsSupported.map((organization) => (
+                  <div
+                    key={organization}
+                    className="flex min-h-16 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-slate-200"
+                  >
+                    <Zap className="h-4 w-4 shrink-0 text-cyan-300" />
+                    {organization}
+                  </div>
+                ))}
+              </div>
             </motion.div>
 
             {/* Three enterprise content blocks */}
@@ -309,9 +320,9 @@ export default function Home() {
         <section id="services" className="bg-[#050816] py-24">
           <div className="container-wrapper">
             <SectionIntro
-              eyebrow="Services"
-              title="A bento-style capability system built for modern product teams."
-              description="Each offer is framed as a business capability rather than a generic service line so buyers can understand scope, outcomes, and fit faster."
+              eyebrow="Utility engineering and outsourcing"
+              title="Accelerate utility technology projects with trained engineers."
+              description="VarchasLabs provides project-ready software professionals to electricity, energy, gas, water, smart metering, and utility software organizations. Our engineers can extend your existing team or work as dedicated project teams."
             />
 
             <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -323,12 +334,44 @@ export default function Home() {
         </section>
 
         <section className="border-y border-white/8 bg-[#071326] py-24">
+          <div className="container-wrapper">
+            <SectionIntro
+              eyebrow="Flexible delivery models"
+              title="Engineering support that fits the work ahead."
+              description="Bring in a specialist, extend an existing team, or outsource a complete utility technology project."
+            />
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+              {engagementModels.map((model) => (
+                <motion.div
+                  key={model.title}
+                  whileHover={{ y: -5 }}
+                  className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">
+                    <model.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 font-display text-lg font-semibold text-white">{model.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{model.copy}</p>
+                </motion.div>
+              ))}
+            </div>
+            <div className="mt-8 flex justify-center">
+              <Link href="/contact">
+                <Button className="rounded-full bg-cyan-400 px-6 font-semibold text-slate-950 hover:bg-cyan-300">
+                  Hire Our Engineers <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-white/8 bg-[#071326] py-24">
           <div className="container-wrapper grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
             <div className="space-y-8">
               <SectionIntro
                 eyebrow="Why Varchas Labs"
                 title="Built for teams that care about outcomes, not just output."
-                description="The redesigned narrative focuses on product accountability, measurable quality, and delivery confidence instead of broad staffing claims."
+                description="Utility projects need reliable engineering, domain context, and clear collaboration. VarchasLabs teams can support your existing delivery organization at the level you need."
               />
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -373,9 +416,9 @@ export default function Home() {
           <div className="container-wrapper grid gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-center">
             <div className="space-y-8">
               <SectionIntro
-                eyebrow="Product engineering showcase"
-                title="From strategy to shipped software, engineered as one connected system."
-                description="This section replaces generic feature selling with a structured delivery map that shows how design, engineering, QA, and scale fit together."
+                eyebrow="Utility software engineering"
+                title="From utility requirements to dependable digital platforms."
+                description="Bring software development, QA, integration, and operational capabilities together to advance utility technology projects."
               />
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -429,7 +472,7 @@ export default function Home() {
               <SectionIntro
                 eyebrow="AI and automation"
                 title="AI-enabled execution that creates leverage, not noise."
-                description="The new site positions AI as an operational capability layer: workflow automation, intelligent QA, internal tooling, support copilots, and decision-support systems."
+                description="Apply data and AI engineering to utility workflows, analytics, quality automation, and digital services where they fit your requirements."
               />
 
               <div className="grid gap-4">
@@ -451,7 +494,7 @@ export default function Home() {
             <SectionIntro
               eyebrow="Process"
               title="Delivery built for clarity, speed, and quality."
-              description="The homepage now surfaces a process timeline that reduces buying risk and shows how Varchas Labs runs discovery, design, build, QA, launch, and scale."
+              description="We align on requirements, build the right engineering capability, validate the work, and support delivery through deployment and scale."
             />
 
             <div className="mt-12 grid gap-5 lg:grid-cols-6">
@@ -472,12 +515,12 @@ export default function Home() {
         <section className="border-y border-white/8 bg-[#071326] py-24">
           <div className="container-wrapper">
             <SectionIntro
-              eyebrow="Technologies"
-              title="A modern stack for products that need to perform under pressure."
-              description="Technology proof is organized by capability area instead of one long list so technical buyers can understand how the stack supports delivery outcomes."
+              eyebrow="Our engineering talent"
+              title="Modern engineering skills for utility technology teams."
+              description="Build the right mix of software, automation, cloud, data, AI, mobile, and product design skills for your project."
             />
 
-            <div className="mt-12 grid gap-5 lg:grid-cols-4">
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
               {technologyGroups.map((group) => (
                 <div key={group.title} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-500/10 text-violet-300">
@@ -500,12 +543,42 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="relative isolate overflow-hidden border-y border-cyan-300/15 bg-[#081624] py-24">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_15%_10%,rgba(34,211,238,.12),transparent_65%),radial-gradient(ellipse_45%_55%_at_95%_90%,rgba(59,130,246,.12),transparent_65%)]" />
+          <div className="container-wrapper relative grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
+                <Zap className="h-3.5 w-3.5" /> Utility domain expertise
+              </span>
+              <h2 className="mt-5 font-display text-3xl font-bold text-white md:text-4xl">
+                Built for utility technology.
+              </h2>
+              <p className="mt-5 max-w-xl text-base leading-8 text-slate-300">
+                Our engineers support technology projects across the utility ecosystem, from smart metering and AMI platforms to cloud applications and system integration.
+              </p>
+              <Link href="/contact">
+                <Button className="mt-8 rounded-full bg-cyan-400 px-6 font-semibold text-slate-950 hover:bg-cyan-300">
+                  Discuss Your Utility Project <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {utilityExpertise.map((item) => (
+                <div key={item} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-slate-950/35 px-4 py-4 text-sm text-slate-100">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="bg-[#050816] py-24">
           <div className="container-wrapper">
             <SectionIntro
-              eyebrow="Industries"
-              title="Domain-aware delivery for complex business environments."
-              description="Industry framing adds relevance, helps SEO, and shows buyers that the company understands operating context, not just implementation tasks."
+              eyebrow="Industries we support"
+              title="Utility engineering capability across digital industries."
+              description="Our focus is utility technology. We also support engineering teams across other digital industries with software, QA, cloud, and data expertise."
             />
 
             <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -567,7 +640,7 @@ export default function Home() {
             <SectionIntro
               eyebrow="Testimonials"
               title="Feedback designed to sound like product leadership, not filler marketing."
-              description="The testimonial area is structured to support founder, product, and enterprise buyer trust with concise, credible quotes."
+              description="Engineering partnerships work best with direct communication, shared expectations, and clear ownership throughout delivery."
             />
 
             <div className="mt-12 grid gap-5 xl:grid-cols-3">
@@ -591,7 +664,7 @@ export default function Home() {
               <SectionIntro
                 eyebrow="Security and performance"
                 title="Quality, accessibility, and performance are part of the build, not the cleanup."
-                description="A stronger trust section makes the company feel more procurement-ready and reduces enterprise hesitation around governance, QA, and operational standards."
+                description="Integrate engineers into your existing standards for security, quality assurance, performance, and operations."
               />
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -632,8 +705,8 @@ export default function Home() {
           <div className="container-wrapper grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
             <SectionIntro
               eyebrow="FAQ"
-              title="Questions enterprise buyers and startup teams actually ask before they reach out."
-              description="The FAQ section removes friction, clarifies scope, and reinforces confidence in delivery breadth without overwhelming the page with long-form copy."
+              title="Questions utility teams ask when sourcing engineering support."
+              description="Understand how skills, team structures, and outsourcing models can fit your utility technology projects."
             />
 
             <Accordion type="single" collapsible className="rounded-[2rem] border border-white/10 bg-white/5 px-6 py-4">
@@ -655,8 +728,8 @@ export default function Home() {
           <div className="container-wrapper">
             <SectionIntro
               eyebrow="Careers"
-              title="A focused careers snapshot for candidates without overpowering the buyer journey."
-              description="The jobs anchor remains in place so the existing navigation continues to work, but careers now sits later in the page where it supports rather than leads the narrative."
+              title="Build your career in technology engineering."
+              description="Explore current opportunities to develop software, cloud, data, QA, and AI skills with VarchasLabs."
             />
 
             <div className="mt-12 grid gap-5 xl:grid-cols-3">
@@ -698,26 +771,26 @@ export default function Home() {
                     Strategy session available
                   </div>
                   <h2 className="text-4xl font-display font-bold text-white md:text-5xl">
-                    Need a software partner that can move from strategy to shipped product?
+                    Need skilled software engineers for your utility project?
                   </h2>
                   <p className="max-w-2xl text-lg leading-8 text-slate-200">
-                    Let us talk about your roadmap, technical constraints, and what it will take to launch with more clarity, confidence, and delivery velocity.
+                    Scale your technology team with trained engineers across modern development, QA, cloud, DevOps, data, AI, and utility technology.
                   </p>
-                  <div className="text-sm text-slate-300">Typical response within one business day.</div>
+                  <div className="text-sm text-slate-300">Individual engineers | Dedicated teams | Project outsourcing</div>
                 </div>
 
                 <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                   <Link href="/contact">
                     <Button className="h-14 rounded-full bg-cyan-400 px-8 text-base font-semibold text-slate-950 hover:bg-cyan-300">
-                      Book a Strategy Call
+                      Tell Us Your Requirement
                     </Button>
                   </Link>
-                  <Link href="/services">
+                  <Link href="/contact">
                     <Button
                       variant="outline"
                       className="h-14 rounded-full border-white/15 bg-white/5 px-8 text-base text-white hover:bg-white/10 hover:text-white"
                     >
-                      Explore Services
+                      Hire Our Engineers
                     </Button>
                   </Link>
                 </div>
@@ -841,18 +914,18 @@ type CaseStudy = {
 };
 
 const heroMetrics = [
-  { value: "50+", label: "Product and platform engagements" },
-  { value: "200+", label: "Client and partner relationships" },
-  { value: "15+", label: "Years of delivery experience" },
-  { value: "24/7", label: "Delivery visibility and response cadence" },
+  { value: "6", label: "Engineering skill groups" },
+  { value: "5", label: "Flexible engagement models" },
+  { value: "12", label: "Utility technology areas" },
+  { value: "Utility", label: "Domain-focused engineering" },
 ];
 
 const heroPills = [
-  "Product strategy",
-  "UX and design systems",
-  "React and full-stack engineering",
-  "QA automation",
-  "Cloud readiness",
+  "Full-stack development",
+  "QA and automation",
+  "Cloud and DevOps",
+  "Data and AI",
+  "Utility platforms",
 ];
 
 const releaseChecks = [
@@ -871,126 +944,120 @@ const podLabels = ["Discovery", "Design", "Engineering", "QA", "DevOps", "Growth
 
 const trustIndicators: IconCopy[] = [
   {
-    title: "Enterprise-ready delivery",
-    copy: "A clearer value proposition, stronger architecture language, and a proof-led homepage build more trust with serious buyers.",
+    title: "Utility-aware engineering",
+    copy: "Engineers can support smart metering, utility platforms, integrations, and modern digital services.",
     icon: ShieldCheck,
   },
   {
-    title: "Product-led execution",
-    copy: "Messaging now centers on business goals, system quality, and release outcomes instead of generic staffing language.",
+    title: "Flexible team integration",
+    copy: "Add individual engineers or dedicated teams as an extension of your existing technology organization.",
     icon: Workflow,
   },
   {
-    title: "Scalable design system thinking",
-    copy: "The redesign introduces reusable section patterns that can scale across services, industries, case studies, and future content.",
+    title: "Skills matched to your stack",
+    copy: "Source software development, QA, cloud, DevOps, data, AI, mobile, and design expertise for your project.",
     icon: Layers,
   },
 ];
 
 const trustBlocks = trustIndicators;
 
-const trustedLogos: { name: string; logo: string }[] = [
-  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" },
-  { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
-  { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
-  { name: "TCS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/TCS_Logo.svg" },
-  { name: "Infosys", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" },
-  { name: "Wipro", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" },
-  { name: "Accenture", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" },
-  { name: "IBM", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" },
-  { name: "Oracle", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" },
-  { name: "SAP", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" },
-  { name: "Adobe", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Adobe_Corporate_logo.svg" },
-  { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" },
-  { name: "Cognizant", logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/Cognizant_logo_2022.svg" },
-  { name: "HCL Technologies", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c5/HCL_Tech_Bee_Logo.svg" },
-  { name: "Tech Mahindra", logo: "https://upload.wikimedia.org/wikipedia/commons/3/38/Tech_Mahindra_New_Logo.svg" },
-  { name: "Capgemini", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Capgemini_201x_logo.svg" },
-  { name: "Meta", logo: "https://upload.wikimedia.org/wikipedia/commons/0/05/Meta_Platforms_Inc._logo.svg" },
-  { name: "Apple", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
-  { name: "Netflix", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
-  { name: "Intel", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg" },
-  { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" },
-  { name: "NVIDIA", logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg" },
-  { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/8/82/Dell_Logo.svg" },
-  { name: "HP", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" },
-  { name: "Samsung", logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" },
-  { name: "Sony", logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg" },
-  { name: "LinkedIn", logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" },
-  { name: "Twitter", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" },
-  { name: "Spotify", logo: "https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_logo_with_text.svg" },
-  { name: "Uber", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.svg" },
-  { name: "Airbnb", logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg" },
-  { name: "PayPal", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" },
-  { name: "Stripe", logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" },
-  { name: "Atlassian", logo: "https://upload.wikimedia.org/wikipedia/commons/7/74/Atlassian-logo.svg" },
-  { name: "GitHub", logo: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" },
-  { name: "GitLab", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e1/GitLab_logo.svg" },
-  { name: "Slack", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" },
-  { name: "Zoom", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Zoom_Communications_Logo.svg" },
-  { name: "VMware", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Vmware.svg" },
-  { name: "Red Hat", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d8/Red_Hat_logo.svg" },
+const organizationsSupported = [
+  "Electricity utilities",
+  "Power distribution companies",
+  "Energy companies",
+  "Smart metering companies",
+  "AMI providers",
+  "HES providers",
+  "MDM providers",
+  "Utility software companies",
+  "Energy technology companies",
+  "Gas utilities",
+  "Water utilities",
+  "Renewable energy companies",
+  "Utility digital transformation teams",
 ];
 
 const services: ServiceCardData[] = [
   {
-    title: "Product Engineering",
-    copy: "Move from roadmap to release with one delivery partner across discovery, system design, engineering, QA, and launch support.",
-    tags: ["MVPs", "Platforms", "Modernization"],
-    icon: Rocket,
+    title: "Full-Stack Development",
+    copy: "Build and extend utility applications, APIs, and platforms with engineers across the modern software stack.",
+    tags: ["React", "Node.js", "Java", "Python"],
+    icon: Code2,
     iconWrap: "bg-cyan-400/10 text-cyan-300",
     layout: "wide",
   },
   {
-    title: "UX/UI Design",
-    copy: "Design systems, user flows, and interfaces built for clarity, adoption, and conversion.",
-    tags: ["Research", "Flows", "Design systems"],
-    icon: Sparkles,
-    iconWrap: "bg-violet-500/10 text-violet-300",
-  },
-  {
-    title: "React Development",
-    copy: "Modern frontend delivery with reusable components, performance discipline, and maintainable foundations.",
-    tags: ["React", "Next.js", "TypeScript"],
-    icon: Code2,
-    iconWrap: "bg-blue-500/10 text-blue-300",
-  },
-  {
-    title: "Software Testing",
-    copy: "QA automation, regression coverage, performance checks, and release confidence built into the delivery lifecycle.",
-    tags: ["Automation", "Performance", "Quality gates"],
+    title: "QA & Automation",
+    copy: "Strengthen utility releases with automation engineers for API, end-to-end, regression, and performance testing.",
+    tags: ["Playwright", "Selenium", "Cypress", "Performance"],
     icon: CheckCircle2,
     iconWrap: "bg-emerald-500/10 text-emerald-300",
     layout: "tall",
   },
   {
-    title: "Web Development",
-    copy: "Fast, modern web experiences that balance product storytelling, scalability, and operational clarity.",
-    tags: ["Marketing sites", "Platforms", "CMS"],
-    icon: Database,
+    title: "Cloud & DevOps",
+    copy: "Automate utility platform infrastructure, delivery pipelines, and cloud operations with experienced engineers.",
+    tags: ["AWS", "Azure", "Kubernetes", "Terraform"],
+    icon: Cloud,
     iconWrap: "bg-sky-500/10 text-sky-300",
   },
   {
-    title: "WordPress Development",
-    copy: "Content-driven sites with stronger structure, better editorial control, and higher brand quality.",
-    tags: ["CMS", "Content ops", "SEO"],
-    icon: Building2,
-    iconWrap: "bg-amber-500/10 text-amber-300",
+    title: "Data & AI",
+    copy: "Turn operational and meter data into reliable pipelines, analytics, and practical AI capabilities.",
+    tags: ["Data engineering", "Analytics", "Machine learning"],
+    icon: Database,
+    iconWrap: "bg-violet-500/10 text-violet-300",
   },
   {
-    title: "AI and Automation",
-    copy: "Workflow automation, support copilots, internal tools, and intelligent QA designed for operational leverage.",
-    tags: ["Automation", "AI assistants", "Ops tooling"],
-    icon: Bot,
-    iconWrap: "bg-fuchsia-500/10 text-fuchsia-300",
+    title: "Mobile Development",
+    copy: "Deliver mobile applications and field experiences for utility customers and operations teams.",
+    tags: ["Android", "iOS", "Flutter", "React Native"],
+    icon: Smartphone,
+    iconWrap: "bg-blue-500/10 text-blue-300",
+  },
+  {
+    title: "UI/UX & Product Design",
+    copy: "Create clear, accessible digital experiences for utility platforms, portals, and operational tools.",
+    tags: ["UI design", "UX design", "Figma"],
+    icon: Palette,
+    iconWrap: "bg-amber-500/10 text-amber-300",
     layout: "wide",
+  },
+];
+
+const engagementModels: IconCopy[] = [
+  {
+    title: "Staff Augmentation",
+    copy: "Add skilled VarchasLabs engineers to your existing development or QA team.",
+    icon: Users,
+  },
+  {
+    title: "Dedicated Engineers",
+    copy: "Engage engineers selected for your technical and utility-domain requirements.",
+    icon: Code2,
+  },
+  {
+    title: "Dedicated Teams",
+    copy: "Build development, QA, DevOps, data, or cloud teams around your project.",
+    icon: Building2,
+  },
+  {
+    title: "Project Outsourcing",
+    copy: "Outsource a defined software development or technology project to VarchasLabs.",
+    icon: Workflow,
+  },
+  {
+    title: "Build, Train & Deploy",
+    copy: "Prepare engineers around your technology and domain needs, then deploy them to your project.",
+    icon: GraduationCap,
   },
 ];
 
 const whyChoose: IconCopy[] = [
   {
-    title: "Product-first execution",
-    copy: "Teams are aligned around user experience, roadmap priorities, and measurable business impact instead of disconnected task delivery.",
+    title: "Engineering matched to your utility work",
+    copy: "Align technical skills and utility-domain context with your systems, project needs, and delivery priorities.",
     icon: LineChart,
   },
   {
@@ -1005,7 +1072,7 @@ const whyChoose: IconCopy[] = [
   },
   {
     title: "Flexible engagement models",
-    copy: "Scale from workshops to dedicated pods and long-term product delivery partnerships without changing standards.",
+    copy: "Choose staff augmentation, dedicated engineers, full teams, or project outsourcing to fit your requirements.",
     icon: Users,
   },
 ];
@@ -1083,9 +1150,9 @@ const automationCapabilities: IconCopy[] = [
 ];
 
 const automationPoints = [
-  "AI should appear where it accelerates delivery or operations, not as decorative positioning.",
-  "Workflow automation and internal tools create leverage for teams that need speed without chaos.",
-  "Support assistants, reporting automation, and QA intelligence are positioned as practical, high-trust capabilities.",
+  "Apply machine learning and generative AI to practical utility workflows and digital services.",
+  "Automate testing and operational processes to improve consistency across project delivery.",
+  "Build analytics and decision-support capabilities around data generated by utility platforms.",
 ];
 
 const processSteps = [
@@ -1098,13 +1165,35 @@ const processSteps = [
 ];
 
 const technologyGroups = [
-  { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Design systems"], icon: Code2 },
-  { title: "Backend", items: ["Node.js", "APIs", "Integrations", "Platform services"], icon: Database },
-  { title: "Cloud and DevOps", items: ["Cloudflare", "Vercel", "CI/CD", "Observability"], icon: Cloud },
-  { title: "Automation and AI", items: ["QA automation", "Workflow automation", "Assistants", "Analytics"], icon: Cpu },
+  { title: "Full-Stack Development", items: ["React", "Angular", "Vue.js", "Next.js", "JavaScript", "TypeScript", "Node.js", "Java", "Spring Boot", "Python", ".NET", "REST APIs", "Microservices"], icon: Code2 },
+  { title: "QA & Automation", items: ["Playwright", "Selenium", "Cypress", "API Testing", "Postman", "Automation Frameworks", "Performance Testing", "JMeter", "k6"], icon: CheckCircle2 },
+  { title: "Cloud & DevOps", items: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Jenkins", "GitLab CI/CD", "GitHub Actions", "Terraform"], icon: Cloud },
+  { title: "Data & AI", items: ["Python", "SQL", "PostgreSQL", "MySQL", "MongoDB", "Power BI", "Data Analytics", "Machine Learning", "Generative AI", "AI Automation"], icon: Cpu },
+  { title: "Mobile Development", items: ["Android", "iOS", "Flutter", "React Native"], icon: Smartphone },
+  { title: "UI/UX", items: ["UI Design", "UX Design", "Product Design", "Figma"], icon: Palette },
+];
+
+const utilityExpertise = [
+  "Smart Metering",
+  "AMI / AMR",
+  "Head-End Systems (HES)",
+  "Meter Data Management (MDM)",
+  "Utility Billing",
+  "Energy Management",
+  "IoT",
+  "Utility Analytics",
+  "API Integration",
+  "System Integration",
+  "Digital Utility Platforms",
+  "Cloud-Based Utility Applications",
 ];
 
 const industries: IconCopy[] = [
+  {
+    title: "Utilities & Energy",
+    copy: "Software engineering support for electricity, energy, gas, water, smart metering, and utility technology platforms.",
+    icon: Zap,
+  },
   {
     title: "Healthcare",
     copy: "Secure, workflow-aware digital experiences where trust, usability, and operational clarity matter.",

@@ -32,6 +32,7 @@ export default function WhatsAppButton({
 }: WhatsAppButtonProps) {
   const [mounted, setMounted] = useState(false);
   const [bubbleOpen, setBubbleOpen] = useState(false);
+  const [contactFormVisible, setContactFormVisible] = useState(false);
 
   useEffect(() => {
     const t = window.setTimeout(() => setMounted(true), delayMs);
@@ -46,12 +47,25 @@ export default function WhatsAppButton({
     return () => window.clearTimeout(t);
   }, [mounted, showGreeting]);
 
+  useEffect(() => {
+    const contactForm = document.getElementById("contact-form");
+    if (!contactForm) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setContactFormVisible(entry.isIntersecting);
+    });
+    observer.observe(contactForm);
+    return () => observer.disconnect();
+  }, []);
+
   const dismissBubble = () => {
     setBubbleOpen(false);
     sessionStorage.setItem("vl_wa_greeting_dismissed", "1");
   };
 
   const href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+  if (contactFormVisible) return null;
 
   return (
     <div className="fixed bottom-5 right-5 z-[70] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
