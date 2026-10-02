@@ -8,9 +8,16 @@ import {
   Factory,
   Plane,
   Building2,
+  Zap,
 } from "lucide-react";
 
 const industries = [
+  {
+    icon: Zap,
+    name: "Utilities & Energy",
+    desc: "Software engineering for electricity, energy, gas, water, smart metering, and utility technology platforms.",
+    proof: "Utility technology",
+  },
   {
     icon: Banknote,
     name: "Banking & Financial Services",
@@ -59,14 +66,20 @@ const industries = [
     desc: "Citizen services, identity, and secure data exchange platforms.",
     proof: "Compliance-first delivery",
   },
+  {
+    icon: Building2,
+    name: "Infrastructure",
+    desc: "Digital platforms, system integrations, and data capabilities for connected infrastructure and essential services.",
+    proof: "Connected systems",
+  },
 ];
 
 export default function Industries() {
   return (
     <PageShell
       eyebrow="Industries"
-      title="Domain depth across regulated, scaled industries"
-      description="We pair senior engineers with industry specialists so your teams move faster without re-learning your domain."
+      title="Engineering for complex, connected industries"
+      description="We provide software, QA, cloud, and data engineering support for utility, financial, retail, infrastructure, and other digital organizations."
       ctas={[
         { label: "Discuss Your Industry", href: "/contact" },
         { label: "See Case Studies", href: "/case-studies", variant: "ghost" },
@@ -75,7 +88,7 @@ export default function Industries() {
       <Section>
         <SectionHeading
           eyebrow="Where we deliver"
-          title="Eight industries, one delivery standard"
+          title="Industry expertise, one delivery standard"
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {industries.map(({ icon: Icon, name, desc, proof }, i) => (

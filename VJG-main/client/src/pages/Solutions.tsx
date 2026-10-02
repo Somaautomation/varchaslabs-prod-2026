@@ -14,8 +14,8 @@ const solutions = [
   {
     icon: Code2,
     title: "Product Engineering",
-    desc: "From discovery to launch, we ship secure, scalable products with cross-functional pods.",
-    bullets: ["Web & mobile apps", "API & micro-services", "Design systems"],
+    desc: "Build and extend utility software, digital platforms, APIs, and integrations with cross-functional engineering teams.",
+    bullets: ["Utility applications", "API & system integration", "Web and mobile platforms"],
   },
   {
     icon: Bot,
@@ -50,8 +50,8 @@ const solutions = [
   {
     icon: Cpu,
     title: "Talent & Staffing",
-    desc: "Pre-vetted engineering talent embedded in your teams in days, not months.",
-    bullets: ["Contract & C2H", "Dedicated pods", "Executive search"],
+    desc: "Trained software engineers for utility technology organizations, working as an extension of your team or in dedicated project teams.",
+    bullets: ["Staff augmentation", "Dedicated engineers and teams", "Project outsourcing"],
   },
   {
     icon: LineChart,
@@ -65,8 +65,8 @@ export default function Solutions() {
   return (
     <PageShell
       eyebrow="Solutions"
-      title="End-to-end solutions for modern enterprises"
-      description="From product engineering to AI, cloud, data, and security — we deliver outcomes that move the business, not just the backlog."
+      title="Engineering solutions for utility technology and modern enterprises"
+      description="VarchasLabs provides utility-domain software engineers across product development, QA, cloud, data, AI, and technology outsourcing."
       ctas={[
         { label: "Talk to an Expert", href: "/contact" },
         { label: "View Case Studies", href: "/case-studies", variant: "ghost" },
@@ -75,8 +75,8 @@ export default function Solutions() {
       <Section>
         <SectionHeading
           eyebrow="What we do"
-          title="Eight practices, one delivery model"
-          description="Composable engagements you can mix and match — staffed with senior engineers, governed by measurable outcomes."
+          title="Flexible engineering capabilities, one delivery partner"
+          description="Combine skills and engagement models to support utility software, smart metering, energy, and enterprise technology projects."
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {solutions.map(({ icon: Icon, title, desc, bullets }, i) => (

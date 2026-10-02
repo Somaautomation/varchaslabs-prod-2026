@@ -47,6 +47,8 @@ const steps = [
   },
 ];
 
+const utilityTalentCycle = ["Train", "Build Skills", "Deploy", "Outsource", "Scale"];
+
 export default function Process() {
   return (
     <PageShell
@@ -58,6 +60,22 @@ export default function Process() {
         { label: "Meet the Team", href: "/about", variant: "ghost" },
       ]}
     >
+      <Section>
+        <SectionHeading
+          eyebrow="Utility engineering talent"
+          title="Train, build skills, deploy, outsource, scale."
+          description="We prepare engineers around technology and utility-domain requirements, then align them to individual roles, dedicated teams, and project engagements."
+        />
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {utilityTalentCycle.map((stage, index) => (
+            <div key={stage} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 text-center">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">0{index + 1}</div>
+              <div className="mt-2 font-display text-lg font-semibold text-white">{stage}</div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
       <Section>
         <SectionHeading
           eyebrow="Our delivery model"

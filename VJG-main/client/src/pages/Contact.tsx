@@ -1075,7 +1075,7 @@ function TrustPanel() {
         <ul className="mt-4 space-y-4 text-sm">
           <ContactLine Icon={Mail}  label="Email"   value="info@varchaslabs.com" href="mailto:info@varchaslabs.com" />
           <ContactLine Icon={MapPin} label="Head Office" value="North Austin Tech Area, Austin, TX 78758, USA" />
-          <ContactLine Icon={MapPin} label="India Office" value="K R Puram, Bengaluru" />
+          <ContactLine Icon={MapPin} label="India Office" value="Bangalore, India" />
           <ContactLine Icon={Clock} label="Hours"   value="Mon–Sat · 9am – 7pm IST" />
         </ul>
         <div className="mt-6 flex items-center gap-3">

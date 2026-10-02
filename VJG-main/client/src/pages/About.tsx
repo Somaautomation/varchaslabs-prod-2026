@@ -142,7 +142,7 @@ export default function About() {
           </h1>
 
           <p className="text-slate-300 max-w-2xl mx-auto text-lg">
-            Connecting top tech talent with leading organizations since 2025.
+            A technology engineering and talent partner for utility organizations and modern enterprises.
           </p>
         </div>
 
@@ -159,16 +159,16 @@ export default function About() {
                 Who We Are
               </h2>
               <p className="text-slate-600 leading-relaxed">
-                Varchaslabs Technologies delivers scalable software solutions and
-                experienced IT professionals across industries. We empower
-                businesses to innovate, optimize, and grow through our expertise
-                in:
+                VarchasLabs provides trained software engineers and technology
+                professionals through staff augmentation, dedicated teams, and
+                technology outsourcing. Our utility-domain engineering supports
+                organizations across:
               </p>
               <p className="text-slate-600 leading-relaxed font-bold">
-                Retail & E-commerce | Enterprise Applications | Cloud & DevOps | Data & Analytics | AI & Intelligent Automation | Quality Engineering & Automation 
+                Utilities & Energy | Smart Metering | Retail & E-commerce | Banking | Infrastructure | Cloud & DevOps | Data & AI | Quality Engineering
               </p>
               <p className="text-slate-600 leading-relaxed">
-                We are more than a service provider — we are your strategic technology and talent partner for sustainable success.
+                Our engineers can extend an existing technology organization or work as a dedicated VarchasLabs project team.
               </p>
             </div>
             <div className="relative">

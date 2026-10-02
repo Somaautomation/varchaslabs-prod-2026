@@ -76,8 +76,7 @@ export default function Footer() {
               <span className="font-display font-bold text-xl">VarchasLabs</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
-              Engineering talent and product solutions for modern enterprises. We help global teams
-              ship secure, scalable software with senior engineers and proven delivery models.
+              Utility-domain software engineering, staff augmentation, dedicated teams, and technology outsourcing for modern organizations.
             </p>
             <div className="flex gap-3">
               <SocialIcon icon={<Linkedin size={16} />} href="https://www.linkedin.com/in/varchaslabs-pvt-ltd-5101773b1/" label="LinkedIn" />
@@ -131,7 +130,7 @@ export default function Footer() {
             <MapPin className="h-5 w-5 text-cyan-400 shrink-0 mt-0.5" />
             <div>
               <div className="text-xs uppercase tracking-wider text-cyan-300/80">India Office</div>
-              <div>K R Puram, Bangalore 560049, India</div>
+              <div>Bangalore, India</div>
             </div>
           </div>
           <div className="flex items-center gap-3">

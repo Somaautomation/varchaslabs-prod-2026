@@ -1195,6 +1195,21 @@ const industries: IconCopy[] = [
     icon: Zap,
   },
   {
+    title: "Banking",
+    copy: "Engineering support for core banking platforms, payments, integrations, data, and customer-facing digital services.",
+    icon: Landmark,
+  },
+  {
+    title: "Retail",
+    copy: "Software capabilities for retail operations, omnichannel experiences, commerce platforms, and analytics.",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Infrastructure",
+    copy: "Digital systems, integrations, and data capabilities for connected infrastructure and essential services.",
+    icon: Building2,
+  },
+  {
     title: "Healthcare",
     copy: "Secure, workflow-aware digital experiences where trust, usability, and operational clarity matter.",
     icon: HeartPulse,

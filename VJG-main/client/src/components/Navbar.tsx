@@ -13,8 +13,8 @@ const navItems: NavItem[] = [
   {
     name: "Solutions",
     children: [
-      { name: "All Solutions", href: "/solutions", description: "Eight engineering practices" },
-      { name: "Services", href: "/services", description: "IT staffing & talent" },
+      { name: "All Solutions", href: "/solutions", description: "Utility engineering capabilities" },
+      { name: "Services", href: "/services", description: "Utility engineering & outsourcing" },
       { name: "Technologies", href: "/technologies", description: "Stack & toolbox" },
       { name: "Process", href: "/process", description: "How we deliver" },
     ],
@@ -124,7 +124,7 @@ export default function Navbar() {
                       : "bg-gradient-to-r from-transparent via-sky-400 to-transparent"
                   )}
                 />
-                Engineering Talent Solutions
+                Utility Engineering
               </span>
             </div>
           </motion.div>

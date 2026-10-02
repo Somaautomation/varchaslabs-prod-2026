@@ -84,8 +84,8 @@ export default function Technologies() {
   return (
     <PageShell
       eyebrow="Technologies"
-      title="A pragmatic, modern stack — chosen for outcomes"
-      description="We're stack-fluent, not stack-religious. Our engineers ship in the technologies that fit your platform, your team, and your roadmap."
+      title="Modern engineering skills for utility technology teams"
+      description="VarchasLabs engineers work across modern software technologies and utility platforms, matched to your existing systems, team, and roadmap."
       ctas={[
         { label: "See How We Build", href: "/process" },
         { label: "Engage Our Team", href: "/contact", variant: "ghost" },
@@ -93,8 +93,8 @@ export default function Technologies() {
     >
       <Section>
         <SectionHeading
-          eyebrow="Our toolbox"
-          title="Six capability groups, hundreds of tools mastered"
+          eyebrow="Engineering talent"
+          title="Skills across the modern technology stack"
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {groups.map((g, i) => (
@@ -111,6 +111,20 @@ export default function Technologies() {
                 ))}
               </div>
             </GlassCard>
+          ))}
+        </div>
+      </Section>
+      <Section>
+        <SectionHeading
+          eyebrow="Utility-domain systems"
+          title="Technology experience shaped around utility platforms"
+          description="Engineering support for the systems, data, and integrations used across utility technology environments."
+        />
+        <div className="flex flex-wrap gap-3">
+          {["Smart Metering", "AMI / AMR", "Head-End Systems (HES)", "Meter Data Management (MDM)", "Utility Billing", "Energy Management", "IoT", "Utility Analytics", "API Integration", "System Integration", "Digital Utility Platforms", "Cloud Utility Applications"].map((item) => (
+            <span key={item} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200">
+              {item}
+            </span>
           ))}
         </div>
       </Section>
