@@ -28,7 +28,6 @@ import {
   Layers,
   LineChart,
   Lock,
-  Quote,
   Rocket,
   ShieldCheck,
   ShoppingCart,
@@ -88,16 +87,16 @@ export default function Home() {
               <motion.div variants={fadeInUp}>
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-4 py-2 text-sm text-slate-200 backdrop-blur">
                   <Sparkles className="h-4 w-4 text-cyan-300" />
-                  Utility-domain engineering and outsourcing
+                  Technology engineering and talent outsourcing
                 </div>
               </motion.div>
 
               <motion.div variants={fadeInUp} className="space-y-6">
                 <h1 className="max-w-4xl text-5xl font-display font-bold leading-[1.02] text-white md:text-6xl lg:text-7xl">
-                  Skilled Software Engineers for the Utility Industry
+                  Skilled Technology Engineers. Ready for Your Projects.
                 </h1>
                 <p className="max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
-                  VarchasLabs provides trained software engineers and technology professionals to utility-domain companies through flexible outsourcing, staff augmentation, and dedicated engineering teams.
+                  VarchasLabs provides trained, project-ready technology professionals to companies across industries through staff augmentation, dedicated engineers, technology teams, and software development outsourcing.
                 </p>
               </motion.div>
 
@@ -152,11 +151,11 @@ export default function Home() {
               <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/8 p-6 shadow-[0_30px_120px_-40px_rgba(37,99,235,0.65)] backdrop-blur-2xl">
                 <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/55 px-5 py-4">
                   <div>
-                    <div className="text-sm uppercase tracking-[0.22em] text-cyan-300">Delivery cockpit</div>
-                    <div className="mt-1 text-xl font-semibold text-white">Product execution visibility</div>
+                    <div className="text-sm uppercase tracking-[0.22em] text-cyan-300">Technology talent</div>
+                    <div className="mt-1 text-xl font-semibold text-white">Engineering support, shaped around your project</div>
                   </div>
                   <div className="rounded-full bg-emerald-400/15 px-3 py-1 text-sm text-emerald-300">
-                    Weekly operating cadence
+                    Flexible engagement model
                   </div>
                 </div>
 
@@ -164,27 +163,19 @@ export default function Home() {
                   <div className="rounded-3xl border border-white/10 bg-[#081224] p-5">
                     <div className="flex items-center justify-between">
                       <div>
-                        <div className="text-sm text-slate-400">Release readiness</div>
-                        <div className="mt-1 text-3xl font-display font-bold text-white">92%</div>
+                        <div className="text-sm text-slate-400">Talent coverage</div>
+                        <div className="mt-1 text-2xl font-display font-bold text-white">Project-ready</div>
                       </div>
                       <div className="rounded-2xl bg-cyan-400/10 p-3 text-cyan-300">
                         <Gauge className="h-6 w-6" />
                       </div>
                     </div>
 
-                    <div className="mt-5 space-y-3">
-                      {releaseChecks.map((item) => (
-                        <div key={item.label} className="space-y-2">
-                          <div className="flex items-center justify-between text-sm text-slate-300">
-                            <span>{item.label}</span>
-                            <span>{item.value}</span>
-                          </div>
-                          <div className="h-2 overflow-hidden rounded-full bg-white/8">
-                            <div
-                              className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500"
-                              style={{ width: item.value }}
-                            />
-                          </div>
+                    <div className="mt-5 grid gap-3">
+                      {deliveryCapabilities.map((item) => (
+                        <div key={item} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-3 text-sm text-slate-200">
+                          <CheckCircle2 className="h-4 w-4 shrink-0 text-cyan-300" />
+                          {item}
                         </div>
                       ))}
                     </div>
@@ -252,13 +243,13 @@ export default function Home() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
                 </span>
-                Utility ecosystem
+                Industries our technology talent can support
               </span>
               <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-white md:text-4xl lg:text-[2.75rem]">
-                Organizations we support
+                Technology talent across industries
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
-                We support electricity, energy, gas, water, smart metering, and utility software organizations with engineering talent matched to their technology needs.
+                Build domain-aware teams for energy, financial services, retail, healthcare, manufacturing, telecom, logistics, insurance, education, SaaS, and public-sector technology.
               </p>
             </motion.div>
 
@@ -270,13 +261,16 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                {organizationsSupported.map((organization) => (
+                {organizationsSupported.map(({ title, copy, icon: Icon }) => (
                   <div
-                    key={organization}
-                    className="flex min-h-16 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-slate-200"
+                    key={title}
+                    className="min-h-28 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-left"
                   >
-                    <Zap className="h-4 w-4 shrink-0 text-cyan-300" />
-                    {organization}
+                    <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
+                      <Icon className="h-4 w-4 shrink-0 text-cyan-300" />
+                      {title}
+                    </div>
+                    <p className="mt-2 text-xs leading-5 text-slate-400">{copy}</p>
                   </div>
                 ))}
               </div>
@@ -320,9 +314,9 @@ export default function Home() {
         <section id="services" className="bg-[#050816] py-24">
           <div className="container-wrapper">
             <SectionIntro
-              eyebrow="Utility engineering and outsourcing"
-              title="Accelerate utility technology projects with trained engineers."
-              description="VarchasLabs provides project-ready software professionals to electricity, energy, gas, water, smart metering, and utility software organizations. Our engineers can extend your existing team or work as dedicated project teams."
+              eyebrow="Engineering outsourcing"
+              title="Outsource technology requirements to VarchasLabs."
+                description="VarchasLabs provides trained, project-ready software professionals across industries. Add engineers to your existing team, build a dedicated team, or outsource a defined software project."
             />
 
             <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -338,7 +332,7 @@ export default function Home() {
             <SectionIntro
               eyebrow="Flexible delivery models"
               title="Engineering support that fits the work ahead."
-              description="Bring in a specialist, extend an existing team, or outsource a complete utility technology project."
+              description="Bring in a specialist, extend an existing engineering team, or outsource a complete technology project."
             />
             <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
               {engagementModels.map((model) => (
@@ -362,6 +356,38 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
+            <div className="mt-14 grid gap-10 border-t border-white/10 pt-10 lg:grid-cols-2">
+              <div>
+                <h3 className="font-display text-xl font-semibold text-white">Scale your existing engineering team</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">Add trained professionals based on the roles, technologies, and capacity your project needs.</p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {staffingExamples.map((example) => (
+                    <div key={example} className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-slate-200">{example}</div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="font-display text-xl font-semibold text-white">Build your dedicated technology team</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">Select a role mix around your project. Team composition can scale with your requirements.</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {dedicatedTeamRoles.map((role) => (
+                    <span key={role} className="rounded-full border border-white/10 bg-slate-950/40 px-3 py-1.5 text-xs text-slate-200">{role}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="mt-10 border-t border-white/10 pt-10">
+              <h3 className="font-display text-xl font-semibold text-white">Outsource your software project</h3>
+              <p className="mt-2 text-sm text-slate-300">Engage individual engineers or a complete team for delivery from requirements through support.</p>
+              <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
+                {outsourcingLifecycle.map((stage, index) => (
+                  <div key={stage} className="rounded-xl border border-white/10 bg-white/[0.04] px-3 py-3 text-center">
+                    <div className="text-[10px] font-semibold uppercase tracking-wider text-cyan-300">0{index + 1}</div>
+                    <div className="mt-1 text-xs font-medium text-slate-100">{stage}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -371,7 +397,7 @@ export default function Home() {
               <SectionIntro
                 eyebrow="Why Varchas Labs"
                 title="Built for teams that care about outcomes, not just output."
-                description="Utility projects need reliable engineering, domain context, and clear collaboration. VarchasLabs teams can support your existing delivery organization at the level you need."
+                description="Match technical skills, domain context, and team structure to your project needs across industries."
               />
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -416,9 +442,9 @@ export default function Home() {
           <div className="container-wrapper grid gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-center">
             <div className="space-y-8">
               <SectionIntro
-                eyebrow="Utility software engineering"
-                title="From utility requirements to dependable digital platforms."
-                description="Bring software development, QA, integration, and operational capabilities together to advance utility technology projects."
+                eyebrow="Software engineering"
+                title="Build and evolve dependable digital platforms."
+                description="Bring software development, QA, integration, and operations together for projects across industries."
               />
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -472,7 +498,7 @@ export default function Home() {
               <SectionIntro
                 eyebrow="AI and automation"
                 title="AI-enabled execution that creates leverage, not noise."
-                description="Apply data and AI engineering to utility workflows, analytics, quality automation, and digital services where they fit your requirements."
+                description="Apply data and AI engineering to business workflows, analytics, quality automation, and digital services where they fit your requirements."
               />
 
               <div className="grid gap-4">
@@ -515,9 +541,9 @@ export default function Home() {
         <section className="border-y border-white/8 bg-[#071326] py-24">
           <div className="container-wrapper">
             <SectionIntro
-              eyebrow="Our engineering talent"
-              title="Modern engineering skills for utility technology teams."
-              description="Build the right mix of software, automation, cloud, data, AI, mobile, and product design skills for your project."
+              eyebrow="Our technology talent"
+              title="Engineering skills across the modern technology ecosystem."
+              description="Build the right mix of software development, QA, cloud, DevOps, data, AI, mobile, design, and security skills for your project."
             />
 
             <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
@@ -548,25 +574,28 @@ export default function Home() {
           <div className="container-wrapper relative grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
-                <Zap className="h-3.5 w-3.5" /> Utility domain expertise
+                <Layers className="h-3.5 w-3.5" /> Domain-aware engineering
               </span>
               <h2 className="mt-5 font-display text-3xl font-bold text-white md:text-4xl">
-                Built for utility technology.
+                Technology teams aligned to your domain.
               </h2>
               <p className="mt-5 max-w-xl text-base leading-8 text-slate-300">
-                Our engineers support technology projects across the utility ecosystem, from smart metering and AMI platforms to cloud applications and system integration.
+                Our technology professionals can adapt to industry workflows, platforms, and integrations. Energy and utilities is one of several domains our teams can support.
               </p>
               <Link href="/contact">
                 <Button className="mt-8 rounded-full bg-cyan-400 px-6 font-semibold text-slate-950 hover:bg-cyan-300">
-                  Discuss Your Utility Project <ArrowRight className="ml-2 h-4 w-4" />
+                  Discuss Your Requirements <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              {utilityExpertise.map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-slate-950/35 px-4 py-4 text-sm text-slate-100">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
-                  {item}
+              {domainCapabilities.map(({ title, copy, icon: Icon }) => (
+                <div key={title} className="rounded-2xl border border-white/10 bg-slate-950/35 px-4 py-4">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-slate-100">
+                    <Icon className="h-4 w-4 shrink-0 text-cyan-300" />
+                    {title}
+                  </div>
+                  <p className="mt-2 text-xs leading-5 text-slate-400">{copy}</p>
                 </div>
               ))}
             </div>
@@ -577,8 +606,8 @@ export default function Home() {
           <div className="container-wrapper">
             <SectionIntro
               eyebrow="Industries we support"
-              title="Utility engineering capability across digital industries."
-              description="Our focus is utility technology. We also support engineering teams across other digital industries with software, QA, cloud, and data expertise."
+              title="Technology talent across industries."
+              description="Our engineering teams can support domain-focused software and platform projects across energy, finance, retail, healthcare, manufacturing, and other sectors."
             />
 
             <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -598,36 +627,23 @@ export default function Home() {
         <section id="case-studies" className="border-y border-white/8 bg-[#071121] py-24">
           <div className="container-wrapper">
             <SectionIntro
-              eyebrow="Case studies"
-              title="Metrics-driven proof that connects engineering quality to business impact."
-              description="Case study cards now focus on client context, what changed, and the measurable result rather than generic portfolio summaries."
+              eyebrow="Illustrative project scopes"
+              title="Technology projects our teams can support."
+              description="These are examples of project requirements, not client case studies, testimonials, or claims of completed work."
             />
 
-            <div className="mt-12 grid gap-5 xl:grid-cols-3">
-              {caseStudies.map((item) => (
-                <div key={item.title} className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#091120]">
-                  <div className="border-b border-white/10 bg-gradient-to-br from-cyan-400/10 via-blue-500/6 to-violet-500/10 p-6">
-                    <div className="text-sm uppercase tracking-[0.2em] text-cyan-300">{item.category}</div>
-                    <h3 className="mt-3 text-2xl font-display font-semibold text-white">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-300">{item.summary}</p>
-                  </div>
-                  <div className="grid gap-4 p-6">
-                    <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-                      <div className="text-xs uppercase tracking-[0.22em] text-slate-400">Before</div>
-                      <div className="mt-2 text-sm leading-7 text-slate-200">{item.before}</div>
-                    </div>
-                    <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-                      <div className="text-xs uppercase tracking-[0.22em] text-slate-400">After</div>
-                      <div className="mt-2 text-sm leading-7 text-slate-200">{item.after}</div>
-                    </div>
-                    <div className="grid gap-3 sm:grid-cols-3">
-                      {item.metrics.map((metric) => (
-                        <div key={metric.label} className="rounded-2xl border border-white/10 bg-slate-950/45 p-4">
-                          <div className="text-2xl font-display font-bold text-white">{metric.value}</div>
-                          <div className="mt-1 text-xs text-slate-400">{metric.label}</div>
-                        </div>
-                      ))}
-                    </div>
+            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {projectScopes.map((item) => (
+                <div key={item.title} className="rounded-[2rem] border border-white/10 bg-[#091120] p-6">
+                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">{item.industry}</div>
+                  <h3 className="mt-3 text-xl font-display font-semibold text-white">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{item.summary}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {item.capabilities.map((capability) => (
+                      <span key={capability} className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-slate-200">
+                        {capability}
+                      </span>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -638,20 +654,17 @@ export default function Home() {
         <section className="bg-[#050816] py-24">
           <div className="container-wrapper">
             <SectionIntro
-              eyebrow="Testimonials"
-              title="Feedback designed to sound like product leadership, not filler marketing."
-              description="Engineering partnerships work best with direct communication, shared expectations, and clear ownership throughout delivery."
+              eyebrow="Partnership approach"
+              title="Flexible capacity. Clear expectations. Shared delivery."
+              description="Our engagement model is shaped around role requirements, technical fit, and the way your teams work."
             />
 
             <div className="mt-12 grid gap-5 xl:grid-cols-3">
-              {testimonials.map((item) => (
-                <div key={item.name} className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
-                  <Quote className="h-8 w-8 text-cyan-300" />
-                  <p className="mt-6 text-base leading-8 text-slate-200">{item.quote}</p>
-                  <div className="mt-8 border-t border-white/10 pt-5">
-                    <div className="font-display text-lg font-semibold text-white">{item.name}</div>
-                    <div className="text-sm text-slate-400">{item.role}</div>
-                  </div>
+              {partnershipPrinciples.map((item) => (
+                <div key={item.title} className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
+                  <item.icon className="h-8 w-8 text-cyan-300" />
+                  <h3 className="mt-6 font-display text-xl font-semibold text-white">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{item.copy}</p>
                 </div>
               ))}
             </div>
@@ -705,8 +718,8 @@ export default function Home() {
           <div className="container-wrapper grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
             <SectionIntro
               eyebrow="FAQ"
-              title="Questions utility teams ask when sourcing engineering support."
-              description="Understand how skills, team structures, and outsourcing models can fit your utility technology projects."
+              title="Questions teams ask when sourcing engineering support."
+              description="Understand how skills, team structures, and outsourcing models can fit your project requirements."
             />
 
             <Accordion type="single" collapsible className="rounded-[2rem] border border-white/10 bg-white/5 px-6 py-4">
@@ -768,13 +781,13 @@ export default function Home() {
                 <div className="max-w-3xl space-y-5">
                   <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-4 py-2 text-sm text-slate-200">
                     <Rocket className="h-4 w-4 text-cyan-300" />
-                    Strategy session available
+                    Flexible engineering support
                   </div>
                   <h2 className="text-4xl font-display font-bold text-white md:text-5xl">
-                    Need skilled software engineers for your utility project?
+                    Looking for skilled technology engineers?
                   </h2>
                   <p className="max-w-2xl text-lg leading-8 text-slate-200">
-                    Scale your technology team with trained engineers across modern development, QA, cloud, DevOps, data, AI, and utility technology.
+                    From a single developer to a complete delivery team, access trained professionals across software development, QA, automation, cloud, DevOps, data, AI, mobile, UI/UX, and cybersecurity.
                   </p>
                   <div className="text-sm text-slate-300">Individual engineers | Dedicated teams | Project outsourcing</div>
                 </div>
@@ -782,7 +795,7 @@ export default function Home() {
                 <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                   <Link href="/contact">
                     <Button className="h-14 rounded-full bg-cyan-400 px-8 text-base font-semibold text-slate-950 hover:bg-cyan-300">
-                      Tell Us Your Requirement
+                      Request a Team
                     </Button>
                   </Link>
                   <Link href="/contact">
@@ -791,6 +804,14 @@ export default function Home() {
                       className="h-14 rounded-full border-white/15 bg-white/5 px-8 text-base text-white hover:bg-white/10 hover:text-white"
                     >
                       Hire Our Engineers
+                    </Button>
+                  </Link>
+                  <Link href="/contact">
+                    <Button
+                      variant="outline"
+                      className="h-14 rounded-full border-white/15 bg-white/5 px-8 text-base text-white hover:bg-white/10 hover:text-white"
+                    >
+                      Contact VarchasLabs
                     </Button>
                   </Link>
                 </div>
@@ -863,32 +884,6 @@ function ServiceBentoCard({ service }: { service: ServiceCardData }) {
   );
 }
 
-function LogoTile({ company }: { company: Company }) {
-  const [failed, setFailed] = useState(false);
-
-  return (
-    <div className="flex min-h-[96px] items-center justify-center rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur">
-      {failed ? (
-        <span className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-slate-200">
-          {company.name}
-        </span>
-      ) : (
-        <img
-          src={company.logo}
-          alt={company.name}
-          className="max-h-10 w-full object-contain"
-          onError={() => setFailed(true)}
-        />
-      )}
-    </div>
-  );
-}
-
-type Company = {
-  name: string;
-  logo: string;
-};
-
 type ServiceCardData = {
   title: string;
   copy: string;
@@ -904,20 +899,18 @@ type IconCopy = {
   icon: LucideIcon;
 };
 
-type CaseStudy = {
-  category: string;
+type ProjectScope = {
+  industry: string;
   title: string;
   summary: string;
-  before: string;
-  after: string;
-  metrics: { label: string; value: string }[];
+  capabilities: string[];
 };
 
 const heroMetrics = [
-  { value: "6", label: "Engineering skill groups" },
-  { value: "5", label: "Flexible engagement models" },
-  { value: "12", label: "Utility technology areas" },
-  { value: "Utility", label: "Domain-focused engineering" },
+  { value: "Software", label: "Development and engineering" },
+  { value: "Quality", label: "QA and automation" },
+  { value: "Platform", label: "Cloud, DevOps, and data" },
+  { value: "Flexible", label: "Individual to full team" },
 ];
 
 const heroPills = [
@@ -925,13 +918,14 @@ const heroPills = [
   "QA and automation",
   "Cloud and DevOps",
   "Data and AI",
-  "Utility platforms",
+  "Mobile and UI/UX",
+  "Cybersecurity",
 ];
 
-const releaseChecks = [
-  { label: "Execution tracking", value: "96%" },
-  { label: "QA automation coverage", value: "89%" },
-  { label: "Release governance", value: "91%" },
+const deliveryCapabilities = [
+  "Full-stack and software development",
+  "QA, automation, and release support",
+  "Cloud, DevOps, data, and AI",
 ];
 
 const systemPillars = [
@@ -944,8 +938,8 @@ const podLabels = ["Discovery", "Design", "Engineering", "QA", "DevOps", "Growth
 
 const trustIndicators: IconCopy[] = [
   {
-    title: "Utility-aware engineering",
-    copy: "Engineers can support smart metering, utility platforms, integrations, and modern digital services.",
+    title: "Industry-aware engineering",
+    copy: "Match technology skills to the workflows, integrations, and domain context your project requires.",
     icon: ShieldCheck,
   },
   {
@@ -963,25 +957,24 @@ const trustIndicators: IconCopy[] = [
 const trustBlocks = trustIndicators;
 
 const organizationsSupported = [
-  "Electricity utilities",
-  "Power distribution companies",
-  "Energy companies",
-  "Smart metering companies",
-  "AMI providers",
-  "HES providers",
-  "MDM providers",
-  "Utility software companies",
-  "Energy technology companies",
-  "Gas utilities",
-  "Water utilities",
-  "Renewable energy companies",
-  "Utility digital transformation teams",
+  { title: "Energy & Utilities", copy: "Power, smart metering, energy management, and utility software.", icon: Zap },
+  { title: "Banking & Financial Services", copy: "Payments, digital banking, and financial platforms.", icon: Landmark },
+  { title: "Retail & E-Commerce", copy: "Digital commerce, customer platforms, and supply chain.", icon: ShoppingCart },
+  { title: "Healthcare", copy: "Health platforms, digital health, and healthcare analytics.", icon: HeartPulse },
+  { title: "Manufacturing", copy: "Industrial technology, IoT, automation, and supply chain.", icon: Cpu },
+  { title: "Telecommunications", copy: "Network technology, communications, and OSS/BSS platforms.", icon: Cloud },
+  { title: "Logistics & Transportation", copy: "Transportation, fleet management, and supply chain technology.", icon: Workflow },
+  { title: "Insurance", copy: "Digital insurance, claims platforms, and insurance analytics.", icon: ShieldCheck },
+  { title: "Education", copy: "EdTech, learning platforms, and education technology.", icon: GraduationCap },
+  { title: "Technology & SaaS", copy: "Enterprise software, cloud applications, and digital platforms.", icon: Code2 },
+  { title: "Government & Public Sector", copy: "Digital government, citizen services, and public platforms.", icon: Building2 },
+  { title: "Infrastructure", copy: "Connected infrastructure, integrations, and essential digital services.", icon: Layers },
 ];
 
 const services: ServiceCardData[] = [
   {
     title: "Full-Stack Development",
-    copy: "Build and extend utility applications, APIs, and platforms with engineers across the modern software stack.",
+    copy: "Build and extend web applications, APIs, integrations, and digital platforms with engineers across the modern software stack.",
     tags: ["React", "Node.js", "Java", "Python"],
     icon: Code2,
     iconWrap: "bg-cyan-400/10 text-cyan-300",
@@ -989,7 +982,7 @@ const services: ServiceCardData[] = [
   },
   {
     title: "QA & Automation",
-    copy: "Strengthen utility releases with automation engineers for API, end-to-end, regression, and performance testing.",
+    copy: "Strengthen software quality with engineers for API, end-to-end, regression, and performance testing.",
     tags: ["Playwright", "Selenium", "Cypress", "Performance"],
     icon: CheckCircle2,
     iconWrap: "bg-emerald-500/10 text-emerald-300",
@@ -997,28 +990,28 @@ const services: ServiceCardData[] = [
   },
   {
     title: "Cloud & DevOps",
-    copy: "Automate utility platform infrastructure, delivery pipelines, and cloud operations with experienced engineers.",
+    copy: "Automate infrastructure, delivery pipelines, and cloud operations with experienced engineers.",
     tags: ["AWS", "Azure", "Kubernetes", "Terraform"],
     icon: Cloud,
     iconWrap: "bg-sky-500/10 text-sky-300",
   },
   {
     title: "Data & AI",
-    copy: "Turn operational and meter data into reliable pipelines, analytics, and practical AI capabilities.",
+    copy: "Turn business and operational data into reliable pipelines, analytics, and practical AI capabilities.",
     tags: ["Data engineering", "Analytics", "Machine learning"],
     icon: Database,
     iconWrap: "bg-violet-500/10 text-violet-300",
   },
   {
     title: "Mobile Development",
-    copy: "Deliver mobile applications and field experiences for utility customers and operations teams.",
+    copy: "Deliver mobile applications for customer, employee, and field experiences.",
     tags: ["Android", "iOS", "Flutter", "React Native"],
     icon: Smartphone,
     iconWrap: "bg-blue-500/10 text-blue-300",
   },
   {
     title: "UI/UX & Product Design",
-    copy: "Create clear, accessible digital experiences for utility platforms, portals, and operational tools.",
+    copy: "Create clear, accessible digital experiences for products, portals, and operational tools.",
     tags: ["UI design", "UX design", "Figma"],
     icon: Palette,
     iconWrap: "bg-amber-500/10 text-amber-300",
@@ -1034,7 +1027,7 @@ const engagementModels: IconCopy[] = [
   },
   {
     title: "Dedicated Engineers",
-    copy: "Engage engineers selected for your technical and utility-domain requirements.",
+    copy: "Engage engineers selected for your technical stack, project goals, and domain requirements.",
     icon: Code2,
   },
   {
@@ -1048,16 +1041,33 @@ const engagementModels: IconCopy[] = [
     icon: Workflow,
   },
   {
-    title: "Build, Train & Deploy",
-    copy: "Prepare engineers around your technology and domain needs, then deploy them to your project.",
+    title: "Train, Assess & Deploy",
+    copy: "Develop technical skills, assess practical readiness, provide project exposure, and deploy qualified professionals.",
     icon: GraduationCap,
   },
 ];
 
+const staffingExamples = [
+  "Need 1 React developer?",
+  "Need 3 full-stack developers?",
+  "Need a QA automation team?",
+  "Need DevOps or cloud engineers?",
+  "Need a data or AI team?",
+  "Need a complete product team?",
+];
+
+const dedicatedTeamRoles = [
+  "Project Managers", "Tech Leads", "Frontend Developers", "Backend Developers",
+  "Full-Stack Developers", "QA Engineers", "Automation Engineers", "DevOps Engineers",
+  "Cloud Engineers", "Data Engineers", "AI Engineers", "UI/UX Designers",
+];
+
+const outsourcingLifecycle = ["Requirement", "Design", "Development", "QA", "Automation", "DevOps", "Deployment", "Support"];
+
 const whyChoose: IconCopy[] = [
   {
-    title: "Engineering matched to your utility work",
-    copy: "Align technical skills and utility-domain context with your systems, project needs, and delivery priorities.",
+    title: "Engineering matched to your project",
+    copy: "Align technical skills and relevant domain context with your systems, requirements, and delivery priorities.",
     icon: LineChart,
   },
   {
@@ -1150,9 +1160,9 @@ const automationCapabilities: IconCopy[] = [
 ];
 
 const automationPoints = [
-  "Apply machine learning and generative AI to practical utility workflows and digital services.",
+  "Apply machine learning and generative AI to practical business workflows and digital services.",
   "Automate testing and operational processes to improve consistency across project delivery.",
-  "Build analytics and decision-support capabilities around data generated by utility platforms.",
+  "Build analytics and decision-support capabilities around data generated by industry platforms.",
 ];
 
 const processSteps = [
@@ -1165,148 +1175,138 @@ const processSteps = [
 ];
 
 const technologyGroups = [
-  { title: "Full-Stack Development", items: ["React", "Angular", "Vue.js", "Next.js", "JavaScript", "TypeScript", "Node.js", "Java", "Spring Boot", "Python", ".NET", "REST APIs", "Microservices"], icon: Code2 },
-  { title: "QA & Automation", items: ["Playwright", "Selenium", "Cypress", "API Testing", "Postman", "Automation Frameworks", "Performance Testing", "JMeter", "k6"], icon: CheckCircle2 },
-  { title: "Cloud & DevOps", items: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Jenkins", "GitLab CI/CD", "GitHub Actions", "Terraform"], icon: Cloud },
-  { title: "Data & AI", items: ["Python", "SQL", "PostgreSQL", "MySQL", "MongoDB", "Power BI", "Data Analytics", "Machine Learning", "Generative AI", "AI Automation"], icon: Cpu },
-  { title: "Mobile Development", items: ["Android", "iOS", "Flutter", "React Native"], icon: Smartphone },
-  { title: "UI/UX", items: ["UI Design", "UX Design", "Product Design", "Figma"], icon: Palette },
+  { title: "Full-Stack Development", items: ["React", "Angular", "Vue.js", "Next.js", "JavaScript", "TypeScript", "Node.js", "Java", "Spring Boot", "Python", ".NET", "C#", "REST APIs", "Microservices", "PostgreSQL", "MySQL", "MongoDB", "Redis"], icon: Code2 },
+  { title: "QA & Quality Engineering", items: ["Manual Testing", "Automation Testing", "Playwright", "Selenium", "Cypress", "Appium", "API Testing", "Postman", "Performance Testing", "JMeter", "k6", "Test Automation Frameworks", "CI/CD Testing"], icon: CheckCircle2 },
+  { title: "Cloud & DevOps", items: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Jenkins", "GitLab CI/CD", "GitHub Actions", "Terraform", "Ansible", "Linux", "Monitoring", "Observability"], icon: Cloud },
+  { title: "Data & Analytics", items: ["Python", "SQL", "PostgreSQL", "MySQL", "Data Analytics", "Data Engineering", "ETL", "Power BI", "Pandas", "NumPy", "Business Intelligence", "Data Visualization"], icon: Database },
+  { title: "AI & Machine Learning", items: ["Machine Learning", "Deep Learning", "Generative AI", "LLM Applications", "NLP", "Computer Vision", "AI Automation", "Predictive Analytics"], icon: Cpu },
+  { title: "Mobile Development", items: ["Android", "iOS", "Flutter", "React Native", "Kotlin", "Swift"], icon: Smartphone },
+  { title: "UI/UX & Product Design", items: ["UI Design", "UX Design", "Product Design", "Figma", "Wireframing", "Prototyping", "Design Systems"], icon: Palette },
+  { title: "Cybersecurity", items: ["Application Security", "API Security", "Security Testing", "Identity & Access Management", "Vulnerability Assessment"], icon: Lock },
 ];
 
-const utilityExpertise = [
-  "Smart Metering",
-  "AMI / AMR",
-  "Head-End Systems (HES)",
-  "Meter Data Management (MDM)",
-  "Utility Billing",
-  "Energy Management",
-  "IoT",
-  "Utility Analytics",
-  "API Integration",
-  "System Integration",
-  "Digital Utility Platforms",
-  "Cloud-Based Utility Applications",
+const domainCapabilities: IconCopy[] = [
+  {
+    title: "Energy & Utilities",
+    copy: "Smart metering, AMI / AMR, utility billing, energy management, and digital utility platforms.",
+    icon: Zap,
+  },
+  {
+    title: "Banking & FinTech",
+    copy: "Payments, digital banking, financial platforms, integrations, and analytics.",
+    icon: Landmark,
+  },
+  {
+    title: "Retail & Commerce",
+    copy: "E-commerce, customer platforms, inventory, supply chain, and omnichannel systems.",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Healthcare & Industry",
+    copy: "Digital health, connected products, manufacturing systems, IoT, and automation.",
+    icon: Building2,
+  },
 ];
 
 const industries: IconCopy[] = [
   {
-    title: "Utilities & Energy",
-    copy: "Software engineering support for electricity, energy, gas, water, smart metering, and utility technology platforms.",
+    title: "Energy & Utilities",
+    copy: "Power, electricity, smart metering, energy management, renewable energy, and utility software.",
     icon: Zap,
   },
   {
-    title: "Banking",
-    copy: "Engineering support for core banking platforms, payments, integrations, data, and customer-facing digital services.",
+    title: "Banking & Financial Services",
+    copy: "Banking, fintech, payments, digital banking, and financial platforms.",
     icon: Landmark,
   },
   {
-    title: "Retail",
-    copy: "Software capabilities for retail operations, omnichannel experiences, commerce platforms, and analytics.",
+    title: "Retail & E-Commerce",
+    copy: "Digital commerce, customer platforms, retail operations, and supply chain technology.",
     icon: ShoppingCart,
-  },
-  {
-    title: "Infrastructure",
-    copy: "Digital systems, integrations, and data capabilities for connected infrastructure and essential services.",
-    icon: Building2,
   },
   {
     title: "Healthcare",
-    copy: "Secure, workflow-aware digital experiences where trust, usability, and operational clarity matter.",
+    copy: "Healthcare technology, health platforms, digital health, and healthcare analytics.",
     icon: HeartPulse,
   },
   {
-    title: "Fintech",
-    copy: "Reliable product experiences where precision, confidence, and system quality are critical.",
-    icon: Landmark,
+    title: "Manufacturing & Industrial",
+    copy: "Manufacturing systems, industrial technology, IoT, automation, and supply chain.",
+    icon: Cpu,
   },
   {
-    title: "Ecommerce",
-    copy: "Conversion-focused storefronts, platforms, and internal workflows built for growth.",
-    icon: ShoppingCart,
+    title: "Telecommunications",
+    copy: "Telecom, network technology, communication platforms, and OSS/BSS.",
+    icon: Cloud,
   },
   {
-    title: "Education",
-    copy: "Scalable digital learning experiences with clear information architecture and user-first design.",
+    title: "Logistics & Transportation",
+    copy: "Logistics, fleet management, transportation, and supply chain technology.",
+    icon: Workflow,
+  },
+  {
+    title: "Insurance",
+    copy: "Insurance technology, digital insurance, claims platforms, and analytics.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Education & EdTech",
+    copy: "Education technology, EdTech, and learning platforms.",
     icon: GraduationCap,
   },
   {
-    title: "SaaS",
-    copy: "Dashboards, subscription journeys, internal tools, and product-led experiences designed to scale.",
+    title: "Technology & SaaS",
+    copy: "SaaS, enterprise software, cloud applications, and digital platforms.",
     icon: Layers,
   },
   {
-    title: "Enterprise",
-    copy: "Modernization, internal systems, automation, and delivery models that fit larger organizations.",
+    title: "Government & Public Sector",
+    copy: "Digital government, citizen services, and public technology platforms.",
+    icon: Building2,
+  },
+  {
+    title: "Infrastructure",
+    copy: "Connected infrastructure, system integration, and essential digital services.",
     icon: Building2,
   },
 ];
 
-const caseStudies: CaseStudy[] = [
+const projectScopes: ProjectScope[] = [
   {
-    category: "Banking · Payments core",
-    title: "Cut payment failures by 38% with an event-driven core",
-    summary:
-      "A top-5 Indian private bank needed to launch new products faster without destabilizing an aging payments switch. We rebuilt the core around Kafka and a domain-driven service mesh, then migrated traffic incrementally behind feature flags.",
-    before:
-      "A monolithic payment switch caused recurring failures during peak load, blocked product launches, and required weeks of release coordination across 6 teams.",
-    after:
-      "An event-driven payments core processes traffic with sub-second latency, deploys multiple times per day, and ships new schemes in weeks instead of quarters.",
-    metrics: [
-      { label: "Payment failures", value: "-38%" },
-      { label: "Time-to-launch", value: "4x faster" },
-      { label: "Infra cost", value: "-22%" },
-    ],
+    industry: "Banking & FinTech",
+    title: "Payment and financial platform engineering",
+    summary: "A potential project could combine application development, APIs, data workflows, QA, and cloud engineering for payment or digital banking platforms.",
+    capabilities: ["Backend and APIs", "Data engineering", "QA automation", "Cloud"],
   },
   {
-    category: "Retail · Search & personalization",
-    title: "300M+ shoppers, sub-200ms search at peak",
-    summary:
-      "A global omnichannel retailer's catalog had outgrown its legacy search. We designed a hybrid lexical + vector retrieval platform with personalized re-ranking, hardened it for Black-Friday traffic, and instrumented it end-to-end.",
-    before:
-      "Search latency spiked above 1.2s during peak hours, conversion dropped on long-tail queries, and the merchandising team had no levers to tune ranking.",
-    after:
-      "p95 search latency held under 200ms at peak, conversion lifted on long-tail queries, and merchandisers gained a self-serve ranking studio.",
-    metrics: [
-      { label: "Search p95", value: "180ms" },
-      { label: "Conversion lift", value: "+14%" },
-      { label: "Catalog scale", value: "20M SKUs" },
-    ],
+    industry: "Retail & E-Commerce",
+    title: "Commerce and customer platform development",
+    summary: "A potential engagement could staff frontend, backend, mobile, QA, and data roles for commerce, customer, inventory, or supply-chain platforms.",
+    capabilities: ["Web and mobile", "API integration", "QA", "Analytics"],
   },
   {
-    category: "Healthcare · AI copilot",
-    title: "HIPAA-grade RAG copilot grounded in 12M docs",
-    summary:
-      "A US digital health platform needed a clinician-facing copilot that could answer with citations across 12M internal documents. We built a role-aware RAG pipeline with an evaluation harness and a guardrail layer for PHI.",
-    before:
-      "Clinicians spent 20+ minutes per case searching across siloed knowledge bases, with no audit trail and inconsistent answer quality.",
-    after:
-      "A production copilot delivers citation-backed answers in seconds, with PHI redaction, role-aware retrieval, and a regression-tested evaluation suite.",
-    metrics: [
-      { label: "Answer accuracy", value: "92%" },
-      { label: "Hallucination rate", value: "<3%" },
-      { label: "Time-to-answer", value: "-87%" },
-    ],
+    industry: "Energy & Utilities",
+    title: "Smart metering and utility platform support",
+    summary: "A potential project could add engineers for smart metering, AMI / AMR integrations, utility applications, data workflows, and platform quality.",
+    capabilities: ["AMI / AMR", "System integration", "Data", "QA automation"],
   },
 ];
 
-const testimonials = [
+const partnershipPrinciples: IconCopy[] = [
   {
-    quote:
-      "VarchasLabs felt like an extension of our platform team from week one. They unblocked our payments modernization in a quarter — work that had been stuck for over a year.",
-    name: "SVP, Engineering",
-    role: "Top-5 Indian private bank",
+    title: "Skills matched to requirements",
+    copy: "Define roles, technologies, experience, and relevant domain context for the engagement.",
+    icon: Code2,
   },
   {
-    quote:
-      "Their senior engineers don't just write code — they raise the bar on design, security, and observability across the team. Our internal review velocity has visibly improved.",
-    name: "VP Product",
-    role: "Global omnichannel retailer",
+    title: "Flexible team composition",
+    copy: "Engage an individual engineer, a specialist group, or a cross-functional delivery team.",
+    icon: Users,
   },
   {
-    quote:
-      "Shipping a HIPAA-grade RAG copilot in 90 days sounded impossible. VarchasLabs delivered it with an evaluation harness we still use to ship safely every week.",
-    name: "CTO",
-    role: "US digital health platform",
+    title: "Transparent collaboration",
+    copy: "Align on responsibilities, communication, and delivery expectations with your organization.",
+    icon: Workflow,
   },
 ];
 
@@ -1378,47 +1378,4 @@ const jobs = [
     location: "Bangalore / Remote",
     description: "Support UX research, interface systems, and product storytelling across SaaS and enterprise product engagements.",
   },
-];
-
-const companies: Company[] = [
-  { name: "Microsoft", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoft/microsoft-original.svg" },
-  { name: "Google", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" },
-  { name: "Amazon", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
-  { name: "TCS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/TCS_Logo.svg" },
-  { name: "Infosys", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" },
-  { name: "Wipro", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" },
-  { name: "Accenture", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" },
-  { name: "IBM", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" },
-  { name: "Oracle", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" },
-  { name: "SAP", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" },
-  { name: "Adobe", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Adobe_Corporate_logo.svg" },
-  { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" },
-  { name: "Cognizant", logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/Cognizant_logo_2022.svg" },
-  { name: "HCL Technologies", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c5/HCL_Tech_Bee_Logo.svg" },
-  { name: "Tech Mahindra", logo: "https://upload.wikimedia.org/wikipedia/commons/3/38/Tech_Mahindra_New_Logo.svg" },
-  { name: "Capgemini", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Capgemini_201x_logo.svg" },
-  { name: "Deloitte", logo: "https://upload.wikimedia.org/wikipedia/commons/5/56/Deloitte.svg" },
-  { name: "Dell", logo: "https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg" },
-  { name: "HP", logo: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" },
-  { name: "Cisco", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" },
-  { name: "Intel", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg" },
-  { name: "VMware", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Vmware.svg" },
-  { name: "ServiceNow", logo: "https://upload.wikimedia.org/wikipedia/commons/5/57/ServiceNow_logo.svg" },
-  { name: "Zoho", logo: "https://upload.wikimedia.org/wikipedia/commons/3/30/ZOHO_logo_2023.svg" },
-  { name: "DXC Technology", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/DXC_Technology_logo.svg" },
-  { name: "EPAM", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1a/EPAM_logo.svg" },
-  { name: "LTIMindtree", logo: "https://upload.wikimedia.org/wikipedia/commons/0/00/LTIMindtree_logo.svg" },
-  { name: "Mphasis", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Mphasis_Logo.svg" },
-  { name: "Kroger", logo: "https://upload.wikimedia.org/wikipedia/commons/8/87/Kroger_logo.svg" },
-  { name: "Tesco", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Tesco_Logo.svg" },
-  { name: "Walmart", logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Walmart_logo.svg" },
-  { name: "Target", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Target_logo.svg" },
-  { name: "Flipkart", logo: "https://upload.wikimedia.org/wikipedia/commons/1/10/Flipkart_logo.svg" },
-  { name: "eBay", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" },
-  { name: "JPMorgan Chase", logo: "https://upload.wikimedia.org/wikipedia/commons/a/af/J.P._Morgan_Logo_2008_1.svg" },
-  { name: "Goldman Sachs", logo: "https://upload.wikimedia.org/wikipedia/commons/6/61/Goldman_Sachs.svg" },
-  { name: "HSBC", logo: "https://upload.wikimedia.org/wikipedia/commons/a/aa/HSBC_logo_%282018%29.svg" },
-  { name: "Citibank", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Citi.svg" },
-  { name: "HDFC Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg" },
-  { name: "ICICI Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/1/12/ICICI_Bank_Logo.svg" },
 ];

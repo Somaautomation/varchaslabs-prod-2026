@@ -84,8 +84,8 @@ export default function Technologies() {
   return (
     <PageShell
       eyebrow="Technologies"
-      title="Modern engineering skills for utility technology teams"
-      description="VarchasLabs engineers work across modern software technologies and utility platforms, matched to your existing systems, team, and roadmap."
+      title="Modern engineering skills for technology teams"
+      description="VarchasLabs engineers work across modern software technologies and industry platforms, matched to your existing systems, team, and roadmap."
       ctas={[
         { label: "See How We Build", href: "/process" },
         { label: "Engage Our Team", href: "/contact", variant: "ghost" },
@@ -116,9 +116,9 @@ export default function Technologies() {
       </Section>
       <Section>
         <SectionHeading
-          eyebrow="Utility-domain systems"
-          title="Technology experience shaped around utility platforms"
-          description="Engineering support for the systems, data, and integrations used across utility technology environments."
+          eyebrow="Industry-specific context"
+          title="Domain-aware engineering for specialized platforms"
+          description="For example, teams supporting energy and utilities may work with the systems, data, and integrations used across smart metering and utility platforms."
         />
         <div className="flex flex-wrap gap-3">
           {["Smart Metering", "AMI / AMR", "Head-End Systems (HES)", "Meter Data Management (MDM)", "Utility Billing", "Energy Management", "IoT", "Utility Analytics", "API Integration", "System Integration", "Digital Utility Platforms", "Cloud Utility Applications"].map((item) => (

@@ -14,8 +14,8 @@ const solutions = [
   {
     icon: Code2,
     title: "Product Engineering",
-    desc: "Build and extend utility software, digital platforms, APIs, and integrations with cross-functional engineering teams.",
-    bullets: ["Utility applications", "API & system integration", "Web and mobile platforms"],
+    desc: "Build and extend software, digital platforms, APIs, and integrations with cross-functional engineering teams.",
+    bullets: ["Web & mobile applications", "API & system integration", "Digital platforms"],
   },
   {
     icon: Bot,
@@ -50,7 +50,7 @@ const solutions = [
   {
     icon: Cpu,
     title: "Talent & Staffing",
-    desc: "Trained software engineers for utility technology organizations, working as an extension of your team or in dedicated project teams.",
+    desc: "Trained technology professionals for organizations across industries, working as an extension of your team or in dedicated project teams.",
     bullets: ["Staff augmentation", "Dedicated engineers and teams", "Project outsourcing"],
   },
   {
@@ -65,8 +65,8 @@ export default function Solutions() {
   return (
     <PageShell
       eyebrow="Solutions"
-      title="Engineering solutions for utility technology and modern enterprises"
-      description="VarchasLabs provides utility-domain software engineers across product development, QA, cloud, data, AI, and technology outsourcing."
+      title="Technology engineering and outsourcing across industries"
+      description="VarchasLabs provides trained software engineers across product development, QA, cloud, data, AI, and technology outsourcing, matched to your industry and project requirements."
       ctas={[
         { label: "Talk to an Expert", href: "/contact" },
         { label: "View Case Studies", href: "/case-studies", variant: "ghost" },
@@ -76,7 +76,7 @@ export default function Solutions() {
         <SectionHeading
           eyebrow="What we do"
           title="Flexible engineering capabilities, one delivery partner"
-          description="Combine skills and engagement models to support utility software, smart metering, energy, and enterprise technology projects."
+          description="Combine technical skills and engagement models for energy, finance, retail, healthcare, manufacturing, SaaS, public-sector, and other technology projects."
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {solutions.map(({ icon: Icon, title, desc, bullets }, i) => (

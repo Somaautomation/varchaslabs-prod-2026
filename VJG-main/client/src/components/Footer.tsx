@@ -76,7 +76,7 @@ export default function Footer() {
               <span className="font-display font-bold text-xl">VarchasLabs</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
-              Utility-domain software engineering, staff augmentation, dedicated teams, and technology outsourcing for modern organizations.
+              Trained technology professionals for organizations across industries through staff augmentation, dedicated teams, software development, and technology outsourcing.
             </p>
             <div className="flex gap-3">
               <SocialIcon icon={<Linkedin size={16} />} href="https://www.linkedin.com/in/varchaslabs-pvt-ltd-5101773b1/" label="LinkedIn" />

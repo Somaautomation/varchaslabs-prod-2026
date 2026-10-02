@@ -9,68 +9,75 @@ import {
   Plane,
   Building2,
   Zap,
+  Cloud,
+  ShieldCheck,
 } from "lucide-react";
 
 const industries = [
   {
     icon: Zap,
     name: "Utilities & Energy",
-    desc: "Software engineering for electricity, energy, gas, water, smart metering, and utility technology platforms.",
-    proof: "Utility technology",
+    desc: "Potential engineering scope: power, smart metering, energy management, renewable energy, and utility software.",
   },
   {
     icon: Banknote,
     name: "Banking & Financial Services",
-    desc: "Core modernization, payments, fraud, and regulatory engineering for global banks and fintechs.",
-    proof: "12+ Tier-1 banks served",
+    desc: "Potential engineering scope: banking platforms, fintech, payments, digital banking, and financial analytics.",
   },
   {
     icon: HeartPulse,
     name: "Healthcare & Life Sciences",
-    desc: "HIPAA-grade platforms, EHR integrations, clinical data, and patient experience.",
-    proof: "HIPAA & HL7/FHIR ready",
+    desc: "Potential engineering scope: healthcare technology, health platforms, clinical data, and healthcare analytics.",
   },
   {
     icon: ShoppingBag,
     name: "Retail & E-commerce",
-    desc: "Headless commerce, omnichannel, search & recommendations, and unified loyalty.",
-    proof: "300M+ customer interactions",
+    desc: "Potential engineering scope: retail, e-commerce, digital commerce, customer platforms, and supply chain.",
   },
   {
     icon: Truck,
     name: "Logistics & Supply Chain",
-    desc: "Visibility platforms, route optimization, and warehouse automation.",
-    proof: "Global 3PL deployments",
+    desc: "Potential engineering scope: logistics, transportation, fleet management, and supply chain technology.",
   },
   {
     icon: GraduationCap,
     name: "EdTech & Learning",
-    desc: "Learning platforms, assessments, and AI tutors at classroom and enterprise scale.",
-    proof: "Millions of learners",
+    desc: "Potential engineering scope: EdTech, learning platforms, and education technology.",
   },
   {
     icon: Factory,
     name: "Manufacturing & Industrial",
-    desc: "IIoT, MES integrations, predictive maintenance, and digital twins.",
-    proof: "Smart-factory rollouts",
+    desc: "Potential engineering scope: industrial software, IoT, automation, and manufacturing systems.",
   },
   {
     icon: Plane,
     name: "Travel & Hospitality",
-    desc: "Booking engines, loyalty, and revenue management with real-time personalization.",
-    proof: "Sub-200ms search SLAs",
+    desc: "Potential engineering scope: booking platforms, customer applications, loyalty, and revenue systems.",
   },
   {
     icon: Building2,
     name: "Public Sector & GovTech",
-    desc: "Citizen services, identity, and secure data exchange platforms.",
-    proof: "Compliance-first delivery",
+    desc: "Potential engineering scope: digital government, citizen services, and public technology platforms.",
   },
   {
     icon: Building2,
     name: "Infrastructure",
     desc: "Digital platforms, system integrations, and data capabilities for connected infrastructure and essential services.",
-    proof: "Connected systems",
+  },
+  {
+    icon: Cloud,
+    name: "Telecommunications",
+    desc: "Potential engineering scope: telecom networks, communications platforms, and OSS/BSS systems.",
+  },
+  {
+    icon: ShieldCheck,
+    name: "Insurance",
+    desc: "Potential engineering scope: digital insurance, claims platforms, and insurance analytics.",
+  },
+  {
+    icon: Building2,
+    name: "Technology & SaaS",
+    desc: "Potential engineering scope: enterprise software, cloud applications, and digital platforms.",
   },
 ];
 
@@ -79,7 +86,7 @@ export default function Industries() {
     <PageShell
       eyebrow="Industries"
       title="Engineering for complex, connected industries"
-      description="We provide software, QA, cloud, and data engineering support for utility, financial, retail, infrastructure, and other digital organizations."
+      description="Our technology professionals can support projects across utilities, financial services, retail, healthcare, manufacturing, telecom, logistics, insurance, education, SaaS, infrastructure, and public-sector technology."
       ctas={[
         { label: "Discuss Your Industry", href: "/contact" },
         { label: "See Case Studies", href: "/case-studies", variant: "ghost" },
@@ -88,19 +95,16 @@ export default function Industries() {
       <Section>
         <SectionHeading
           eyebrow="Where we deliver"
-          title="Industry expertise, one delivery standard"
+          title="Industries our technology talent can support"
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {industries.map(({ icon: Icon, name, desc, proof }, i) => (
+          {industries.map(({ icon: Icon, name, desc }, i) => (
             <GlassCard key={name} index={i}>
               <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 text-cyan-300">
                 <Icon className="h-5 w-5" />
               </div>
               <h3 className="font-display text-lg font-semibold text-white">{name}</h3>
               <p className="mt-2 text-sm text-slate-300">{desc}</p>
-              <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-cyan-300">
-                {proof}
-              </p>
             </GlassCard>
           ))}
         </div>

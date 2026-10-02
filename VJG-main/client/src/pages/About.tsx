@@ -142,7 +142,7 @@ export default function About() {
           </h1>
 
           <p className="text-slate-300 max-w-2xl mx-auto text-lg">
-            A technology engineering and talent partner for utility organizations and modern enterprises.
+            A technology engineering and talent outsourcing partner for organizations across industries.
           </p>
         </div>
 
@@ -159,16 +159,15 @@ export default function About() {
                 Who We Are
               </h2>
               <p className="text-slate-600 leading-relaxed">
-                VarchasLabs provides trained software engineers and technology
-                professionals through staff augmentation, dedicated teams, and
-                technology outsourcing. Our utility-domain engineering supports
-                organizations across:
+                VarchasLabs provides trained technology professionals through staff
+                augmentation, dedicated engineers, technology teams, software
+                development services, and project outsourcing. Our talent can support:
               </p>
               <p className="text-slate-600 leading-relaxed font-bold">
-                Utilities & Energy | Smart Metering | Retail & E-commerce | Banking | Infrastructure | Cloud & DevOps | Data & AI | Quality Engineering
+                Energy & Utilities | Banking & FinTech | Retail & E-Commerce | Healthcare | Manufacturing | Telecom | Logistics | Insurance | Education | SaaS | Public Sector
               </p>
               <p className="text-slate-600 leading-relaxed">
-                Our engineers can extend an existing technology organization or work as a dedicated VarchasLabs project team.
+                Professionals can extend an existing technology organization or work as a dedicated VarchasLabs project team, with skills matched to the client’s domain and requirements.
               </p>
             </div>
             <div className="relative">
@@ -209,7 +208,7 @@ export default function About() {
               </div>
               <h3 className="text-xl font-bold mb-3">Our Reach</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                1000+ successful projects | 150+ enterprise clients | Trusted technology and talent partner.
+                Trained technology professionals | Flexible engagement models | Cross-industry project support.
               </p>
             </div>
           </div>
@@ -228,7 +227,7 @@ export default function About() {
             <div className="grid md:grid-cols-2 gap-y-6 gap-x-12">
               {[
                 "Expert Solutions: Industry-ready software and services crafted by seasoned professionals.",
-                "Proven Excellence: Trusted by 150+ enterprise clients across multiple domains.",
+                "Domain-aware teams: Match engineering skills to your industry, systems, and project requirements.",
                 "Scalable Delivery: Agile, efficient, and high-quality project execution.",
                 "Rapid Deployment: Reduce time-to-market with experienced teams.",
                 "Talent Empowerment: Access to top-tier IT professionals ready to contribute immediately.",
@@ -250,7 +249,7 @@ export default function About() {
                   size="lg"
                   className="bg-primary hover:bg-blue-600 shadow-lg shadow-primary/20"
                 >
-                  Join Us Today
+                  Contact Our Team
                 </Button>
               </Link>
             </div>

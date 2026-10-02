@@ -61,7 +61,8 @@ type FormState = {
   company: string;
   email: string;
   phone: string;
-  utilityDomain: string;
+  position: string;
+  industry: string;
   requiredTechnology: string;
   engineerCount: string;
   engagementType: string;
@@ -76,7 +77,8 @@ const INITIAL_FORM: FormState = {
   company: "",
   email: "",
   phone: "",
-  utilityDomain: "",
+  position: "",
+  industry: "",
   requiredTechnology: "",
   engineerCount: "",
   engagementType: "",
@@ -86,14 +88,24 @@ const INITIAL_FORM: FormState = {
   description: "",
 };
 
-const UTILITY_DOMAINS = [
-  "Electricity and power distribution",
-  "Energy generation and renewables",
-  "Smart metering / AMI / AMR",
-  "Utility software and platforms",
-  "Gas utilities",
-  "Water utilities",
-  "Other utility technology",
+const INDUSTRIES = [
+  "Energy & Utilities",
+  "Banking & FinTech",
+  "Retail & E-Commerce",
+  "Healthcare",
+  "Manufacturing",
+  "Telecom",
+  "Logistics",
+  "Insurance",
+  "Education",
+  "SaaS & Technology",
+  "Government",
+  "Other",
+];
+
+const APPLICATION_POSITIONS = [
+  "Electrical & Electronics Engineering (EEE)",
+  "Business Analyst",
 ];
 
 const ENGINEER_COUNTS = ["1", "2-5", "6-10", "11-20", "20+"];
@@ -103,6 +115,10 @@ const ENGAGEMENT_TYPES = [
   "Dedicated Engineer",
   "Dedicated Team",
   "Project Outsourcing",
+  "Software Development",
+  "QA & Automation",
+  "DevOps & Cloud",
+  "Data & AI",
   "Technology Partnership",
   "Other",
 ];
@@ -124,14 +140,15 @@ const TIMELINES = [
 ];
 
 const SERVICES = [
-  { id: "product", label: "Utility Software Engineering", Icon: Code2 },
+  { id: "product", label: "Software Development", Icon: Code2 },
   { id: "staffing", label: "Staff Augmentation", Icon: Users },
-  { id: "metering", label: "Smart Metering & AMI", Icon: Gauge },
-  { id: "qa", label: "QA Automation", Icon: TestTube2 },
+  { id: "qa", label: "QA & Automation", Icon: TestTube2 },
   { id: "cloud", label: "Cloud & DevOps", Icon: Cloud },
-  { id: "data", label: "Data & AI", Icon: BrainCircuit },
-  { id: "integration", label: "API & System Integration", Icon: Layers },
-  { id: "platforms", label: "Digital Utility Platforms", Icon: Building2 },
+  { id: "data", label: "Data & Analytics", Icon: BrainCircuit },
+  { id: "ai", label: "AI & Machine Learning", Icon: BrainCircuit },
+  { id: "mobile", label: "Mobile Development", Icon: Globe2 },
+  { id: "design", label: "UI/UX & Product Design", Icon: Palette },
+  { id: "security", label: "Cybersecurity", Icon: ShieldCheck },
 ];
 
 const PROCESS = [
@@ -144,16 +161,16 @@ const PROCESS = [
 ];
 
 const METRICS = [
-  { value: "6", label: "Engineering skill groups" },
-  { value: "5", label: "Engagement models" },
-  { value: "12", label: "Utility technology areas" },
-  { value: "Utility", label: "Domain-focused engineering" },
+  { value: "Software", label: "Development" },
+  { value: "Quality", label: "QA and automation" },
+  { value: "Platform", label: "Cloud and DevOps" },
+  { value: "Flexible", label: "Individual to full team" },
 ];
 
 const TRUST_BADGES = [
   { Icon: Users, label: "Staff augmentation" },
   { Icon: Code2, label: "Dedicated engineers" },
-  { Icon: Building2, label: "Utility technology focus" },
+  { Icon: Building2, label: "Multi-industry technology" },
 ];
 
 /* ────────────────────────────────────────────────────────────────────────── */
@@ -271,7 +288,7 @@ function Hero({ reduced }: { reduced: boolean }) {
   const spotlightX = useTransform(mx, (v) => `${v * 100}%`);
   const spotlightY = useTransform(my, (v) => `${v * 100}%`);
 
-  const headline = "Utility engineers, ready to build what’s next.".split(" ");
+  const headline = "Skilled technology engineers, ready for your projects.".split(" ");
 
   return (
     <section
@@ -323,7 +340,7 @@ function Hero({ reduced }: { reduced: boolean }) {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
             </span>
-            Utility-domain engineering and outsourcing
+            Technology engineering and talent outsourcing
           </motion.span>
 
           <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
@@ -342,7 +359,7 @@ function Hero({ reduced }: { reduced: boolean }) {
             variants={fadeUp}
             className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/65 md:text-lg"
           >
-            VarchasLabs provides trained software engineers and technology professionals to utility companies through flexible outsourcing, staff augmentation, and dedicated engineering teams.
+            VarchasLabs provides trained technology professionals to companies across industries through staff augmentation, dedicated engineers, technology teams, and software development outsourcing.
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center justify-center gap-3">
@@ -499,7 +516,13 @@ function FloatingCTA() {
 /* ────────────────────────────────────────────────────────────────────────── */
 
 function ContactForm() {
-  const [data, setData] = useState<FormState>(INITIAL_FORM);
+  const [data, setData] = useState<FormState>(() => {
+    const requestedPosition = new URLSearchParams(window.location.search).get("position") ?? "";
+    return {
+      ...INITIAL_FORM,
+      position: APPLICATION_POSITIONS.includes(requestedPosition) ? requestedPosition : "",
+    };
+  });
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -518,7 +541,8 @@ function ContactForm() {
     if (data.company) n++;
     if (data.email) n++;
     if (data.phone) n++;
-    if (data.utilityDomain) n++;
+    if (data.position) n++;
+    if (data.industry) n++;
     if (data.requiredTechnology) n++;
     if (data.engineerCount) n++;
     if (data.engagementType) n++;
@@ -529,7 +553,7 @@ function ContactForm() {
     return n;
   }, [data]);
 
-  const progressPct = Math.round((filledCount / 12) * 100);
+  const progressPct = Math.round((filledCount / (data.position ? 13 : 12)) * 100);
 
   const set = <K extends keyof FormState>(k: K, v: FormState[K]) => {
     setData((d) => ({ ...d, [k]: v }));
@@ -563,7 +587,8 @@ function ContactForm() {
 
     const composed = [
       `Company: ${data.company || "—"}`,
-      `Utility Domain: ${data.utilityDomain || "—"}`,
+      `Position Applied For: ${data.position || "—"}`,
+      `Industry: ${data.industry || "—"}`,
       `Required Technology: ${data.requiredTechnology || "—"}`,
       `Number of Engineers Required: ${data.engineerCount || "—"}`,
       `Engagement Type: ${data.engagementType || "—"}`,
@@ -626,13 +651,15 @@ function ContactForm() {
           <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-cyan-300/80">
-                Utility Outsourcing Enquiry
+                {data.position ? "Job Application" : "Engineering Outsourcing Enquiry"}
               </p>
               <h2 className="mt-2 font-display text-2xl font-semibold md:text-3xl">
-                Tell us what engineering support you need
+                {data.position ? `Apply for ${data.position}` : "Tell us what engineering support you need"}
               </h2>
               <p className="mt-2 text-sm text-white/55">
-                Tell us what skills and resources you need. Our team will get in touch with you.
+                {data.position
+                  ? "Share your application details. Our team will get in touch with you."
+                  : "Tell us what skills and resources you need. Our team will get in touch with you."}
               </p>
             </div>
             <div className="w-full max-w-[220px]">
@@ -693,11 +720,18 @@ function ContactForm() {
                     error={errors.phone}
                     autoComplete="tel"
                   />
+                  {data.position && (
+                    <FloatingInput
+                      label="Position"
+                      value={data.position}
+                      onChange={(v) => set("position", v)}
+                    />
+                  )}
                   <FloatingSelect
-                    label="Utility Domain"
-                    value={data.utilityDomain}
-                    onChange={(v) => set("utilityDomain", v)}
-                    options={UTILITY_DOMAINS}
+                    label="Industry"
+                    value={data.industry}
+                    onChange={(v) => set("industry", v)}
+                    options={INDUSTRIES}
                   />
                   <FloatingInput
                     label="Required Technology"
@@ -765,11 +799,12 @@ function ContactForm() {
                 </div>
 
                 <FloatingTextarea
-                  label="Project and resource description"
+                  label={data.position ? "Application details" : "Project and resource description"}
                   value={data.description}
                   onChange={(v) => set("description", v)}
                   error={errors.description}
                   textareaRef={textareaRef}
+                  placeholder={data.position ? "Share your experience, qualification, skills, and professional profile or CV link." : undefined}
                 />
 
                 <div className="flex flex-col-reverse items-stretch justify-between gap-4 pt-2 md:flex-row md:items-center">
@@ -941,12 +976,14 @@ function FloatingTextarea({
   onChange,
   error,
   textareaRef,
+  placeholder = "Share your industry, systems, required skills, team size, and project requirements.",
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   error?: string;
   textareaRef: React.RefObject<HTMLTextAreaElement>;
+  placeholder?: string;
 }) {
   const id = useMemo(() => `t-${Math.random().toString(36).slice(2, 9)}`, []);
   const [focus, setFocus] = useState(false);
@@ -963,7 +1000,7 @@ function FloatingTextarea({
         rows={4}
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-err` : undefined}
-        placeholder="Share the utility systems, skills, team size, and project requirements you have in mind."
+        placeholder={placeholder}
         className={[
           "w-full resize-none rounded-xl border bg-white/[0.03] px-4 pt-6 pb-3 text-sm text-white outline-none transition",
           "backdrop-blur placeholder:text-white/25",
@@ -1045,10 +1082,10 @@ function TrustPanel() {
           Why teams pick Varchas
         </p>
         <h3 className="mt-2 font-display text-xl font-semibold">
-          Engineering support shaped around utility technology.
+          Engineering support shaped around your project.
         </h3>
         <p className="mt-3 text-sm leading-relaxed text-white/60">
-          Extend your team with software engineers across development, QA, cloud, DevOps, data, AI, and utility platforms.
+          Extend your team with professionals across software development, QA, cloud, DevOps, data, AI, mobile, design, and cybersecurity.
         </p>
 
         <div className="mt-6 grid grid-cols-2 gap-3">
@@ -1401,13 +1438,13 @@ function PremiumCTA() {
                 Let's get started
               </p>
               <h2 className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">
-                Need engineering capacity for a utility project?{" "}
+                Need engineering capacity for a technology project?{" "}
                 <span className="bg-gradient-to-r from-cyan-300 to-violet-300 bg-clip-text text-transparent">
                   Let's talk.
                 </span>
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/60 md:text-base">
-                Tell us what skills and resources you need. We can support utility projects with individual engineers, dedicated teams, or project outsourcing.
+                Tell us what skills and resources you need. We can provide individual engineers, dedicated teams, or project outsourcing across industries.
               </p>
             </div>
             <div className="flex flex-col gap-3 md:items-end">

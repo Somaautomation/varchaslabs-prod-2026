@@ -8,7 +8,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function Services() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-90 pt-60">
+    <div className="min-h-screen flex flex-col overflow-x-hidden bg-slate-90 pt-60">
       <Navbar />
 
       {/* ================= HEADER ================= */}
@@ -33,7 +33,7 @@ export default function Services() {
               transition={{ duration: 0.6 }}
               className="text-3xl md:text-4xl font-display font-bold mb-4"
             >
-              Utility-Domain Software Engineering & Outsourcing
+              Technology Engineering & Software Talent Outsourcing
             </motion.h1>
 
             <motion.div
@@ -55,7 +55,7 @@ export default function Services() {
               transition={{ duration: 0.6 }}
               className="text-lg text-slate-300 max-w-2xl md:mx-auto"
             >
-              Trained software engineers for utility technology organizations through staff augmentation, dedicated engineers, project teams, and technology outsourcing.
+              Trained technology professionals for companies across industries through staff augmentation, dedicated engineers, project teams, software development, and technology outsourcing.
             </motion.p>
           </motion.div>
         </div>
@@ -103,11 +103,11 @@ export default function Services() {
             </span>
 
             <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-6">
-              Quality Engineering for Utility Platforms
+              Quality Engineering for Digital Products
             </h2>
 
             <p className="text-lg text-slate-600 mb-8">
-              Our quality engineers support utility software and digital platforms with continuous testing, automation, and release validation across applications, APIs, integrations, and data workflows.
+              Our quality engineers support software products and platforms with continuous testing, automation, and release validation across applications, APIs, integrations, and data workflows.
             </p>
 
             <ul className="space-y-4 mb-8">
@@ -137,7 +137,7 @@ export default function Services() {
           <DetailCard title="Enterprise Apps" description="Specialized testing for SAP, Salesforce, Oracle, and ServiceNow implementations and upgrades." />
           <DetailCard title="Cyber Security" description="Protect your brand and data with comprehensive security assessments and penetration testing." />
           <DetailCard title="IoT & Mobile" description="Ensure seamless connectivity and user experience across the fragmented landscape of devices." />
-          <DetailCard title="Utility Engineering Teams" description="Add utility-aware developers, QA, cloud, DevOps, and data engineers through staff augmentation, dedicated teams, or project outsourcing." />
+          <DetailCard title="Dedicated Engineering Teams" description="Add developers, QA, cloud, DevOps, data, AI, mobile, or design professionals through staff augmentation, dedicated teams, or project outsourcing." />
         </div>
       </div>
 

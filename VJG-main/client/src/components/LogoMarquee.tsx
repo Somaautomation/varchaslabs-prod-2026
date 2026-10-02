@@ -51,7 +51,7 @@ export default function LogoMarquee({
         maskImage:
           "linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%)",
       }}
-      aria-label="Trusted by leading companies"
+      aria-label="Organization logos"
       role="region"
     >
       {[...Array(rows)].map((_, rowIndex) => {

@@ -47,14 +47,14 @@ const steps = [
   },
 ];
 
-const utilityTalentCycle = ["Train", "Build Skills", "Deploy", "Outsource", "Scale"];
+const talentCycle = ["Train", "Assess", "Build", "Deploy", "Upskill", "Scale"];
 
 export default function Process() {
   return (
     <PageShell
       eyebrow="How We Work"
       title="A predictable delivery model — engineered for outcomes"
-      description="Six stages, two-week cadences, weekly demos, and outcome-linked metrics. No surprises, no opaque consultancy theatre."
+      description="A project delivery framework that can adapt to scope, team structure, technical requirements, and client preferences."
       ctas={[
         { label: "Run a Discovery Sprint", href: "/contact" },
         { label: "Meet the Team", href: "/about", variant: "ghost" },
@@ -62,12 +62,12 @@ export default function Process() {
     >
       <Section>
         <SectionHeading
-          eyebrow="Utility engineering talent"
-          title="Train, build skills, deploy, outsource, scale."
-          description="We prepare engineers around technology and utility-domain requirements, then align them to individual roles, dedicated teams, and project engagements."
+          eyebrow="Our talent model"
+          title="Train. Assess. Build. Deploy. Upskill. Scale."
+          description="Develop technology skills, assess practical readiness, provide project exposure, deploy qualified professionals, and continue upskilling as client needs evolve."
         />
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {utilityTalentCycle.map((stage, index) => (
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+          {talentCycle.map((stage, index) => (
             <div key={stage} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 text-center">
               <div className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">0{index + 1}</div>
               <div className="mt-2 font-display text-lg font-semibold text-white">{stage}</div>
